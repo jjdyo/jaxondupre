@@ -1,12 +1,13 @@
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
-    color: #f0f0f0; /* Softer off-white for readability */
-    background-color: #1a1a1a; /* Very dark grey background */
+    color: #f0f0f0;
+    background-color: #1a1a1a;
+    font-size: 1rem; /* Base font size of 16px */
 }
 
 h1, h2, p {
-    color: #f0f0f0; /* Light gray text for readability */
+    color: #f0f0f0;
 }
 
 /* Hero Section */
@@ -14,13 +15,22 @@ h1, h2, p {
     height: 100vh;
     background-color: #1a1a1a;
     color: #f0f0f0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem; /* Equivalent to 40px */
+}
+
+p.lead {
+    font-size: 1.125rem; /* Equivalent to 18px */
 }
 
 /* Floating Elements (Icon + Hamburger Button) */
 .floating-elements {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 1.25rem; /* 20px equivalent */
+    left: 1.25rem;
     display: flex;
     align-items: center;
     z-index: 1000;
@@ -30,29 +40,29 @@ h1, h2, p {
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 0.625rem; /* 10px equivalent */
 }
 
 .icon-image {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem; /* 40px equivalent */
+    height: 2.5rem;
     object-fit: cover;
-    border-radius: 50%; /* Circular image */
+    border-radius: 50%;
 }
 
 .hamburger-btn {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem; /* 30px equivalent */
+    height: 1.875rem;
     justify-content: space-between;
 }
 
 .hamburger-btn div {
     width: 100%;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.3); /* Match floating icon color */
+    height: 0.25rem; /* 4px equivalent */
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Expanded Menu (Grows to fit content) */
@@ -61,10 +71,11 @@ h1, h2, p {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 50vh; /* Can grow larger based on content */
-    background-color: #333; /* Solid light grey background */
-    z-index: 999;
-    padding: 20px;
+    min-height: 50vh;
+    background-color: #333;
+    z-index: 900;
+    padding: 1.25rem; /* 20px equivalent */
+    padding-top: 5rem; /* 80px equivalent to leave space for floating elements */
     flex-direction: column;
     transform: translateX(-100%);
     opacity: 0;
@@ -73,88 +84,83 @@ h1, h2, p {
 }
 
 .expanded-menu.open {
-    transform: translateX(0); /* Move into view */
+    transform: translateX(0);
     opacity: 1;
-    visibility: visible; /* Show menu */
+    visibility: visible;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
 }
 
-/* Expanded Menu Header (Icon + Social Icons) */
-.menu-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
+/* Social Icons (Consistent Sizing) */
 .social-icons {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px equivalent */
 }
 
 .social-icons a {
-    margin: 0 10px;
+    margin: 0 0.625rem; /* 10px equivalent */
 }
 
-.social-icons img {
-    width: 30px;
-    height: 30px;
+.social-icon {
+    width: 1.875rem; /* 30px equivalent */
+    height: 1.875rem;
+    object-fit: contain;
 }
 
-/* Menu Content (Closer text to titles, dynamic size) */
+/* Menu Content */
 .menu-content {
     display: flex;
     flex-direction: column;
 }
 
 .menu-item {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px equivalent */
 }
 
 .menu-item h2 {
-    font-size: 22px;
-    margin-bottom: 5px;
+    font-size: 1.375rem; /* Equivalent to 22px */
+    margin-bottom: 0.3125rem; /* 5px equivalent */
 }
 
 .menu-description {
-    font-size: 14px;
-    color: #999; /* Darker grey for descriptions */
+    font-size: 0.875rem; /* Equivalent to 14px */
+    color: #999;
     text-align: left;
 }
 
-/* Project Card Styling (Stacked format) */
+/* Project Card Styling */
 .project-card {
     background-color: #333;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
+    padding: 1.25rem; /* 20px equivalent */
+    margin-bottom: 1.875rem; /* 30px equivalent */
+    border-radius: 0.5rem; /* 8px equivalent */
 }
 
 .project-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Equivalent to 24px */
+    margin-bottom: 0.625rem; /* 10px equivalent */
 }
 
 .project-card .subtitle {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 1.125rem; /* Equivalent to 18px */
+    margin-bottom: 0.3125rem; /* 5px equivalent */
 }
 
 .project-card .project-info {
-    font-size: 14px;
+    font-size: 0.875rem; /* Equivalent to 14px */
     color: #ccc;
 }
 
 /* Spacer between sections */
 .spacer {
-    height: 50px;
-    background-color: #1a1a1a; /* Same as background to blend seamlessly */
+    height: 3.125rem; /* 50px equivalent */
+    background-color: #1a1a1a;
 }
 
 /* Fade-in effect for elements */
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25rem); /* 20px equivalent */
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 

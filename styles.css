@@ -16,7 +16,7 @@ h1, h2, p {
     color: #f0f0f0;
 }
 
-/* Floating Elements (Initially hidden) */
+/* Floating Elements (Icon + Hamburger Button) */
 .floating-elements {
     position: fixed;
     top: 20px;
@@ -26,19 +26,20 @@ h1, h2, p {
     z-index: 1000;
 }
 
-.hidden {
-    display: none;
-}
-
-/* Floating Name (Link to Top) */
-.floating-name {
-    font-size: 24px;
+.floating-icon {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.3); /* Transparent white */
-    cursor: pointer;
+    margin-right: 10px;
 }
 
-/* Hamburger Menu Button */
+.icon-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%; /* Circular image */
+}
+
 .hamburger-btn {
     display: flex;
     flex-direction: column;
@@ -46,35 +47,48 @@ h1, h2, p {
     width: 30px;
     height: 30px;
     justify-content: space-between;
-    margin-left: 15px;
 }
 
 .hamburger-btn div {
     width: 100%;
     height: 4px;
-    background-color: rgba(255, 255, 255, 0.3); /* Match floating name */
+    background-color: rgba(255, 255, 255, 0.3); /* Match floating icon color */
 }
 
-/* Expanded Menu */
+/* Expanded Menu (Grows to fit content) */
 .expanded-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
+    min-height: 50vh; /* Can grow larger based on content */
+    background-color: #333; /* Solid light grey background */
     z-index: 999;
     padding: 20px;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
 }
 
-/* Social Media Icons */
+.expanded-menu.open {
+    transform: translateX(0); /* Move into view */
+    opacity: 1;
+    visibility: visible; /* Show menu */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
+}
+
+/* Expanded Menu Header (Icon + Social Icons) */
+.menu-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .social-icons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 20px;
 }
 
@@ -87,10 +101,10 @@ h1, h2, p {
     height: 30px;
 }
 
-/* Menu Content */
+/* Menu Content (Closer text to titles, dynamic size) */
 .menu-content {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-item {
@@ -98,13 +112,14 @@ h1, h2, p {
 }
 
 .menu-item h2 {
-    font-size: 24px;
-    color: #f0f0f0;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
-.menu-item p {
-    font-size: 16px;
-    color: #ccc;
+.menu-description {
+    font-size: 14px;
+    color: #999; /* Darker grey for descriptions */
+    text-align: left;
 }
 
 /* Project Card Styling (Stacked format) */

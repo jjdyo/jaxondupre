@@ -1,3 +1,26 @@
+// Hamburger Menu Toggle with Fade-in and Fade-out Animation
+const hamburgerToggle = document.getElementById('hamburger-toggle');
+const expandedMenu = document.getElementById('expanded-menu');
+let isMenuOpen = false;
+
+hamburgerToggle.addEventListener('click', function() {
+    if (!isMenuOpen) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
+});
+
+function openMenu() {
+    expandedMenu.classList.add('open'); // Add the open class
+    isMenuOpen = true;
+}
+
+function closeMenu() {
+    expandedMenu.classList.remove('open'); // Remove the open class
+    isMenuOpen = false;
+}
+
 // Smooth Scroll for internal links
 document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -8,24 +31,11 @@ document.querySelectorAll('.scroll-link').forEach(link => {
         });
 
         // Close the menu after clicking on a link (for mobile)
-        document.getElementById('expanded-menu').style.display = 'none';
-        document.getElementById('navbar-menu').classList.remove('active');
+        closeMenu();
     });
 });
 
-// Hamburger Menu Toggle
-const hamburgerToggle = document.getElementById('hamburger-toggle');
-const expandedMenu = document.getElementById('expanded-menu');
-
-hamburgerToggle.addEventListener('click', function() {
-    if (expandedMenu.style.display === 'none' || expandedMenu.style.display === '') {
-        expandedMenu.style.display = 'flex';
-    } else {
-        expandedMenu.style.display = 'none';
-    }
-});
-
-// Show Floating Name and Hamburger Menu on Scroll
+// Show Floating Icon and Hamburger Menu on Scroll
 const floatingElements = document.getElementById('floating-elements');
 window.addEventListener('scroll', function() {
     if (window.scrollY > 100) {

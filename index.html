@@ -9,9 +9,11 @@
 </head>
 <body>
 
-<!-- Navbar (Floating Name and Hamburger Menu, initially hidden) -->
-<div id="floating-elements" class="floating-elements hidden">
-  <a href="#hero" class="floating-name">Your Name</a>
+<!-- Navbar (Floating Icon and Hamburger Menu) -->
+<div id="floating-elements" class="floating-elements">
+  <a href="#hero" class="floating-icon">
+    <img src="your-icon.png" alt="Icon" class="icon-image">
+  </a>
   <div id="hamburger-toggle" class="hamburger-btn">
     <div></div>
     <div></div>
@@ -19,25 +21,34 @@
   </div>
 </div>
 
-<!-- Expanded Menu (Initially hidden) -->
+<!-- Expanded Menu (Fading in from the left) -->
 <div id="expanded-menu" class="expanded-menu">
+  <!-- Floating Icon and Social Media Icons -->
+  <div class="menu-header">
+    <a href="#hero" class="floating-icon">
+      <img src="your-icon.png" alt="Icon" class="icon-image">
+    </a>
+  </div>
+
+  <!-- Section Links and Menu Content -->
   <div class="social-icons">
     <a href="https://linkedin.com" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
     <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
     <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
   </div>
+
   <div class="menu-content">
     <div class="menu-item">
       <h2>About Me</h2>
-      <p>Learn about my background, passions, and professional journey.</p>
+      <p class="menu-description">Learn about my background, passions, and professional journey.</p>
     </div>
     <div class="menu-item">
       <h2>Projects</h2>
-      <p>Explore my most recent projects, technologies, and challenges solved.</p>
+      <p class="menu-description">Explore my most recent projects, technologies, and challenges solved.</p>
     </div>
     <div class="menu-item">
       <h2>Work Experience</h2>
-      <p>A deep dive into my work history and the roles I've held.</p>
+      <p class="menu-description">A deep dive into my work history and the roles I've held.</p>
     </div>
   </div>
 </div>

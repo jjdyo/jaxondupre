@@ -65,7 +65,7 @@ p.lead {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Expanded Menu (Grows to fit content) */
+/* Expanded Menu */
 .expanded-menu {
     position: fixed;
     top: 0;
@@ -74,13 +74,17 @@ p.lead {
     min-height: 50vh;
     background-color: #333;
     z-index: 900;
-    padding: 1.25rem; /* 20px equivalent */
-    padding-top: 5rem; /* 80px equivalent to leave space for floating elements */
+    padding: 1.25rem;
     flex-direction: column;
     transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+}
+
+/* Add margin-top to prevent content from overlapping floating elements */
+.menu-container {
+    margin-top: 3.75rem; /* 60px (icon) + 30px (hamburger) = 90px (or 5.625rem in rem) */
 }
 
 .expanded-menu.open {
@@ -89,6 +93,7 @@ p.lead {
     visibility: visible;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
 }
+
 
 /* Social Icons (Consistent Sizing) */
 .social-icons {

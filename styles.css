@@ -1,0 +1,64 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f8f9fa; /* Light background to make text stand out */
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-color: #343a40; /* Dark background for contrast */
+    color: white;
+}
+
+/* Bio Section */
+.bio-section {
+    background-color: #fff;
+    color: #333;
+}
+
+.bio-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Animation to make bio text fade in */
+.bio-section:hover .bio-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Projects Section */
+.projects-section {
+    background-color: #e9ecef; /* Slightly darker section for separation */
+}
+
+.project-card {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to make it pop */
+    text-align: center;
+}
+
+/* Work Experience Section */
+.work-experience-section {
+    background-color: #f8f9fa;
+}
+
+/* Headings */
+h1, h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+        padding: 40px 20px;
+    }
+}

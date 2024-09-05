@@ -9,23 +9,36 @@
 </head>
 <body>
 
-<!-- Floating Name (Link to top) -->
-<a href="#hero" class="floating-name">Your Name</a>
-
-<!-- Navbar (Hamburger Menu) -->
-<div class="floating-menu">
+<!-- Navbar (Floating Name and Hamburger Menu, initially hidden) -->
+<div id="floating-elements" class="floating-elements hidden">
+  <a href="#hero" class="floating-name">Your Name</a>
   <div id="hamburger-toggle" class="hamburger-btn">
     <div></div>
     <div></div>
     <div></div>
   </div>
-  <div id="navbar-menu" class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li><a class="scroll-link" href="#hero">Home</a></li>
-      <li><a class="scroll-link" href="#bio-section">About Me</a></li>
-      <li><a class="scroll-link" href="#projects-section">Projects</a></li>
-      <li><a class="scroll-link" href="#work-experience-section">Work Experience</a></li>
-    </ul>
+</div>
+
+<!-- Expanded Menu (Initially hidden) -->
+<div id="expanded-menu" class="expanded-menu">
+  <div class="social-icons">
+    <a href="https://linkedin.com" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+    <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+    <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+  </div>
+  <div class="menu-content">
+    <div class="menu-item">
+      <h2>About Me</h2>
+      <p>Learn about my background, passions, and professional journey.</p>
+    </div>
+    <div class="menu-item">
+      <h2>Projects</h2>
+      <p>Explore my most recent projects, technologies, and challenges solved.</p>
+    </div>
+    <div class="menu-item">
+      <h2>Work Experience</h2>
+      <p>A deep dive into my work history and the roles I've held.</p>
+    </div>
   </div>
 </div>
 
@@ -87,7 +100,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JavaScript for Hamburger Menu, Floating Elements, and Smooth Scroll -->
+<!-- JavaScript for Menu Behavior, Floating Elements, and Smooth Scroll -->
 <script src="script.js"></script>
 
 </body>

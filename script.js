@@ -8,16 +8,31 @@ document.querySelectorAll('.scroll-link').forEach(link => {
         });
 
         // Close the menu after clicking on a link (for mobile)
+        document.getElementById('expanded-menu').style.display = 'none';
         document.getElementById('navbar-menu').classList.remove('active');
     });
 });
 
 // Hamburger Menu Toggle
 const hamburgerToggle = document.getElementById('hamburger-toggle');
-const navbarMenu = document.getElementById('navbar-menu');
+const expandedMenu = document.getElementById('expanded-menu');
 
 hamburgerToggle.addEventListener('click', function() {
-    navbarMenu.classList.toggle('active');
+    if (expandedMenu.style.display === 'none' || expandedMenu.style.display === '') {
+        expandedMenu.style.display = 'flex';
+    } else {
+        expandedMenu.style.display = 'none';
+    }
+});
+
+// Show Floating Name and Hamburger Menu on Scroll
+const floatingElements = document.getElementById('floating-elements');
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 100) {
+        floatingElements.classList.remove('hidden');
+    } else {
+        floatingElements.classList.add('hidden');
+    }
 });
 
 // Fade-in effect for elements

@@ -56,7 +56,7 @@ const observer = new IntersectionObserver((entries, observer) => {
         }
     });
 }, {
-    threshold: 0.1 // Element needs to be 10% visible to trigger the fade-in
+    threshold: 1 // Element needs to be 10% visible to trigger the fade-in
 });
 
 fadeInElements.forEach(element => {

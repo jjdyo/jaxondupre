@@ -74,7 +74,7 @@ p.lead {
     left: 0;
     width: 100%;
     min-height: 50vh;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
     z-index: 900;
     padding: 1.25rem;
     flex-direction: column;
@@ -84,10 +84,6 @@ p.lead {
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
 }
 
-.menu-container {
-    margin-top: 3.75rem; /* 60px (icon) + 30px (hamburger) = 90px (or 5.625rem in rem) */
-}
-
 .expanded-menu.open {
     transform: translateX(0);
     opacity: 1;
@@ -95,11 +91,12 @@ p.lead {
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
 }
 
-/* Social Icons (Consistent Sizing) */
+/* Social Icons */
 .social-icons {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 1.25rem; /* 20px equivalent */
+    margin-top: 3rem; /* Add some top margin to move them below the menu */
 }
 
 .social-icons a {
@@ -126,6 +123,7 @@ p.lead {
     margin-bottom: 1.25rem; /* 20px equivalent */
     padding: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: left; /* Align text to the left */
 }
 
 .menu-item:hover {
@@ -140,22 +138,25 @@ p.lead {
     transition: color 0.3s ease;
 }
 
+/* Remove link underline (and blue line) on hover */
 .menu-item a {
     color: inherit; /* Inherit color from h2 */
-    text-decoration: none;
+    text-decoration: none; /* Remove the underline */
     transition: color 0.3s ease;
 }
 
 .menu-item:hover a {
-    color: #f0f0f0;
+    color: #f0f0f0; /* Set hover color */
+    text-decoration: none; /* Ensure no underline or line appears on hover */
 }
+
 
 .menu-description {
     font-size: 1.75rem;
     color: #999;
     font-family: 'Ubuntu Mono', monospace;
     text-align: left;
-    max-width: 60%;
+    margin-top: 0.5rem;
 }
 
 /* Fade in background when hovering over the whole menu item */
@@ -206,4 +207,121 @@ p.lead {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Mobile Responsiveness for Full-Screen Menu */
+@media (max-width: 768px) {
+
+    /* Resize Hamburger Icon */
+    .hamburger-btn {
+        width: 2rem; /* Make the hamburger icon smaller */
+        height: 2rem;
+        z-index: 1001; /* Ensure it's on top of everything */
+        display: flex; /* Ensure the hamburger icon is visible */
+    }
+
+    .hamburger-btn div {
+        height: 0.2rem; /* Make the hamburger lines thinner */
+    }
+
+    /* Adjust Floating Elements (Icon + Hamburger) */
+    .floating-elements {
+        top: 0.75rem; /* Slightly closer to the top */
+        left: 0.75rem;
+        display: flex; /* Ensure the floating elements are visible */
+        z-index: 1000; /* Keep it on top */
+    }
+
+    .icon-image {
+        width: 2rem; /* Smaller icon size for mobile */
+        height: 2rem;
+    }
+
+    /* Full-screen expanded menu */
+    .expanded-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full width */
+        height: 100vh; /* Full height */
+        background-color: rgba(0, 0, 0, 0.9); /* Darken background */
+        padding: 2rem; /* Add padding for the content */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Start content from top */
+        align-items: flex-start; /* Left align content */
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        z-index: 999; /* Ensure it's on top of everything */
+        overflow-y: auto; /* Allow scrolling for overflowing content */
+    }
+
+    /* Add margin to the menu items and social icons */
+    .menu-container {
+        margin-top: 6rem; /* Leave space for floating elements (hamburger and icon) */
+        width: 100%; /* Ensure the container takes full width */
+        padding: 0 1rem; /* Add padding to avoid text going edge-to-edge */
+    }
+
+    .menu-item {
+        text-align: left; /* Left-align text */
+        width: 100%; /* Full width for easier clicks */
+        padding: 20px 0; /* Larger click targets */
+        margin: 0.75rem 0; /* Add some margin between items */
+        font-size: 1.25rem; /* Reduce the font size slightly */
+        flex-direction: column; /* Stack the text under the headers */
+        align-items: flex-start; /* Ensure alignment is consistent */
+    }
+
+    .menu-description {
+        font-size: 1.25rem; /* Reduce description font size */
+        margin-top: 0.5rem; /* Add some space between header and description */
+        width: 100%; /* Prevent overflow */
+        word-wrap: break-word; /* Break long text */
+    }
+
+    /* Social Icons for Mobile */
+    .social-icons {
+        margin-top: 2rem; /* Space above the icons */
+        margin-bottom: 2rem; /* Space below the icons */
+        justify-content: center;
+    }
+
+    .social-icon {
+        width: 2rem; /* Larger icons on mobile */
+        height: 2rem;
+        margin: 0 0.75rem; /* Add spacing between social icons */
+    }
+
+    /* Hide floating elements ONLY when expanded menu is open */
+    .expanded-menu.open ~ .floating-elements {
+        display: none;
+    }
+
+    /* Adjust Project Cards for Mobile */
+    .project-card h3 {
+        font-size: 1.25rem; /* Smaller title for projects */
+    }
+
+    .project-card .subtitle {
+        font-size: 1rem; /* Smaller subtitle */
+    }
+
+    .project-card .project-info {
+        font-size: 0.85rem; /* Smaller detailed information */
+    }
+
+    /* Adjust Bio Section for Mobile */
+    .bio-section h2 {
+        font-size: 1.5rem; /* Adjust About Me heading */
+    }
+
+    .bio-text {
+        font-size: 1rem; /* Adjust bio text */
+        padding: 0 1rem; /* Add padding to avoid text touching edges */
+    }
+
+    /* Ensure Spacers Adjust on Mobile */
+    .spacer {
+        height: 2rem; /* Smaller spacer between sections */
+    }
 }

@@ -118,25 +118,50 @@ p.lead {
     flex-direction: column;
 }
 
+/* Menu Content */
 .menu-item {
     display: flex;
     justify-content: flex-start;
-    align-items: baseline; /* Align title and description vertically */
+    align-items: baseline;
     margin-bottom: 1.25rem; /* 20px equivalent */
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+    color: #fff;
 }
 
 .menu-item h2 {
-    font-size: 1.75rem; /* Equivalent to 28px */
-    margin-right: 2rem; /* Add space between title and description */
+    font-size: 1.75rem; /* Match the size of the h2 header */
+    margin-right: 2rem;
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.menu-item a {
+    color: inherit; /* Inherit color from h2 */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover a {
     color: #f0f0f0;
 }
 
 .menu-description {
-    font-size: 1.75rem; /* Match the size of the h2 header */
-    color: #999; /* Keep the current color */
-    font-family: 'Ubuntu Mono', monospace; /* Keep the current font */
+    font-size: 1.75rem;
+    color: #999;
+    font-family: 'Ubuntu Mono', monospace;
     text-align: left;
-    max-width: 60%; /* Control long text wrapping */
+    max-width: 60%;
+}
+
+/* Fade in background when hovering over the whole menu item */
+.menu-item:hover .menu-description {
+    color: #f0f0f0; /* Match text to white on hover */
+    transition: color 0.3s ease;
 }
 
 /* Project Card Styling */

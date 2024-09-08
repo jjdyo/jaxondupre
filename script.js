@@ -21,13 +21,14 @@ function closeMenu() {
     isMenuOpen = false;
 }
 
-// Smooth Scroll for internal links
+// Smooth Scroll for internal links with center alignment
 document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         document.querySelector(targetId).scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'center' // Scroll target element to the center of the viewport
         });
 
         // Close the menu after clicking on a link (for mobile)
@@ -56,7 +57,7 @@ const observer = new IntersectionObserver((entries, observer) => {
         }
     });
 }, {
-    threshold: 1 // Element needs to be 10% visible to trigger the fade-in
+    threshold: 1 // Element needs to be fully visible to trigger the fade-in
 });
 
 fadeInElements.forEach(element => {

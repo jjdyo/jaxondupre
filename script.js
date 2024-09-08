@@ -26,7 +26,15 @@ document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        document.querySelector(targetId).scrollIntoView({
+        const targetElement = document.querySelector(targetId).querySelector('h2'); // Target the h2 element inside the section
+
+        // Adjust for extra space at the bottom for the last section
+        const isLastSection = targetId === '#work-experience-section';
+        if (isLastSection) {
+            document.querySelector(targetId).style.paddingBottom = '50vh'; // Add space for the last section
+        }
+
+        targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'center' // Scroll target element to the center of the viewport
         });
@@ -35,6 +43,7 @@ document.querySelectorAll('.scroll-link').forEach(link => {
         closeMenu();
     });
 });
+
 
 // Show Floating Icon and Hamburger Menu on Scroll
 const floatingElements = document.getElementById('floating-elements');

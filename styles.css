@@ -115,7 +115,6 @@ p.lead {
     flex-direction: column;
 }
 
-/* Menu Content */
 .menu-item {
     display: flex;
     justify-content: flex-start;
@@ -138,7 +137,6 @@ p.lead {
     transition: color 0.3s ease;
 }
 
-/* Remove link underline (and blue line) on hover */
 .menu-item a {
     color: inherit; /* Inherit color from h2 */
     text-decoration: none; /* Remove the underline */
@@ -147,9 +145,8 @@ p.lead {
 
 .menu-item:hover a {
     color: #f0f0f0; /* Set hover color */
-    text-decoration: none; /* Ensure no underline or line appears on hover */
+    text-decoration: none;
 }
-
 
 .menu-description {
     font-size: 1.75rem;
@@ -159,10 +156,27 @@ p.lead {
     margin-top: 0.5rem;
 }
 
-/* Fade in background when hovering over the whole menu item */
 .menu-item:hover .menu-description {
     color: #f0f0f0; /* Match text to white on hover */
     transition: color 0.3s ease;
+}
+
+/* Spacer between sections */
+.spacer {
+    height: 3.125rem; /* 50px equivalent */
+    background-color: #1a1a1a;
+}
+
+/* Fade-in effect for elements */
+.fade-in {
+    opacity: 0;
+    transform: translateY(1.25rem); /* 20px equivalent */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Project Card Styling */
@@ -171,6 +185,22 @@ p.lead {
     padding: 1.25rem; /* 20px equivalent */
     margin-bottom: 1.875rem; /* 30px equivalent */
     border-radius: 0.5rem; /* 8px equivalent */
+}
+
+.project-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem; /* Space between image and text */
+}
+
+.project-image {
+    width: 250px; /* Fixed width */
+    height: 250px; /* Fixed height */
+    object-fit: cover; /* Ensure the image covers the space without distortion */
+    background-color: #333; /* Add a placeholder background color while the image loads */
+    border-radius: 8px;
+    flex: none;/* Optional rounded corners */
 }
 
 .project-card h3 {
@@ -197,17 +227,11 @@ p.lead {
     background-color: #1a1a1a;
 }
 
-/* Fade-in effect for elements */
-.fade-in {
-    opacity: 0;
-    transform: translateY(1.25rem); /* 20px equivalent */
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+/* Add extra padding to the last section for smoother scrolling */
+#work-experience-section {
+    padding-bottom: 50vh; /* Extra space for smooth scrolling */
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* Mobile Responsiveness for Full-Screen Menu */
 @media (max-width: 768px) {
@@ -298,6 +322,16 @@ p.lead {
     }
 
     /* Adjust Project Cards for Mobile */
+    .project-content {
+        flex-direction: column; /* Stack image and text on mobile */
+        text-align: center;
+    }
+
+    .project-image {
+        width: 100%; /* Make the image take full width on mobile */
+        height: auto;
+    }
+
     .project-card h3 {
         font-size: 1.25rem; /* Smaller title for projects */
     }
@@ -324,4 +358,5 @@ p.lead {
     .spacer {
         height: 2rem; /* Smaller spacer between sections */
     }
+
 }

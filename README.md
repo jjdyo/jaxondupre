@@ -1,6 +1,6 @@
 ## Hey! I'm Jaxon.
 If you're here, you probably already know that though. So let's cut to the chase! I'm a Florida grown 
-website developer working in PHP, JS, vanilla html/css, and more, with a passion for integrating technology into our lives and technology. 
+website developer working in PHP, JS, vanilla html/css, and more, with a passion for integrating technology into our lives. 
 
 ## ❓whoami
 I started out with tasks for things I needed, like building a scraper with python that would alert me to the best deals for my first ever 

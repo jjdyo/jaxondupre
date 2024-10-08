@@ -44,6 +44,21 @@ document.querySelectorAll('.scroll-link').forEach(link => {
     });
 });
 
+// Assuming your icon has a class of 'floating-icon'
+document.querySelector('.floating-icon').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Scroll to the top of the page
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling
+    });
+
+    // Optionally, you can close the menu or perform another action here if needed
+    closeMenu();
+});
+
+
 
 // Show Floating Icon and Hamburger Menu on Scroll
 const floatingElements = document.getElementById('floating-elements');

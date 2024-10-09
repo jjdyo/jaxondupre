@@ -97,35 +97,25 @@ fadeInElements.forEach(element => {
 // Title Animation Function
 function startTitleAnimation() {
     const frames = [
-        '🧙🪄',            // Wizard and wand
-        '🧙🪄⚡',           // One lightning bolt
-        '🧙🪄⚡⚡',         // Two lightning bolts
-        '🧙🪄⚡⚡⚡',       // Full animation
-        '🧙🪄',            // Return to just wizard and wand
-        '🧙🪄⚡⚡⚡',       // Flash with full animation
-        '🧙🪄',            // Flash off
-        '🧙🪄⚡⚡⚡',       // Flash again
+        '🧙🪄✨',
+        '🧙🪄 ⚡',
+        '🧙🪄 ⚡⚡',
+        '🧙🪄 ⚡⚡⚡',
+        '🧙🪄',
+        '🧙🪄 ⚡⚡⚡',
+        '🧙🪄',
+        '🧙🪄 ⚡⚡⚡',
     ];
 
-    let currentFrame = 0;  // Track current frame
-    let flashCount = 0;    // Track flash repetitions
+    let currentFrame = 0;
 
     function animateTitle() {
-        document.title = frames[currentFrame]; // Update title
-        currentFrame = (currentFrame + 1) % frames.length; // Move to next frame
+        document.title = frames[currentFrame];
+        currentFrame = (currentFrame + 1) % frames.length;  // Loop over frames
 
-        // Set a delay for each frame
-        let delay = (currentFrame < 4) ? 300 : 500; // Faster build-up, slower flashes
-
-        if (currentFrame === 0) {
-            flashCount++;
-            if (flashCount === 2) flashCount = 0; // Reset after 2 flash cycles
-        }
-
-        // Continue the animation
-        setTimeout(animateTitle, delay);
+        // Make updates less frequent for better browser compatibility
+        setTimeout(animateTitle, 1000);  // Update every 1 second (1000 ms)
     }
 
-    // Start animation
-    animateTitle();
+    animateTitle();  // Start the animation
 }

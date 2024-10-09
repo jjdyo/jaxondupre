@@ -217,7 +217,7 @@ p.lead {
 }
 
 .project-card .project-info {
-    font-size: 0.875rem; /* Equivalent to 14px */
+    font-size: 1rem; /* Equivalent to 14px */
     color: #ccc;
     font-family: 'Ubuntu Mono', monospace;
 }

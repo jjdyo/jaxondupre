@@ -1,0 +1,3 @@
+##TODO##
+AI-Assisted Code review -- Self host QODO AI/PR Agent or the like.
+Fragment CSS file -- Header/Content/Footer/Menu/Etc.

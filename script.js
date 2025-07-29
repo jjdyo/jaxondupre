@@ -3,12 +3,11 @@ const hamburgerToggle = document.getElementById('hamburger-toggle');
 const expandedMenu = document.getElementById('expanded-menu');
 let isMenuOpen = false;
 
-// Call startTitleAnimation() when page loads
-window.onload = function() {
-    // Merge this with DOM Ready Check Later
-    // Start title animation
+// Wait for DOM to be fully loaded before starting animation
+document.addEventListener('DOMContentLoaded', function() {
+    // Start title animation after DOM is loaded
     startTitleAnimation();
-};
+});
 hamburgerToggle.addEventListener('click', function() {
     if (!isMenuOpen) {
         openMenu();

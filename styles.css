@@ -15,17 +15,23 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
     height: 100vh;
     background-color: #1a1a1a;
+    background-image: url('files/MushroomOutline.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     color: #f0f0f0;
     text-align: center;
 }
 
 h1 {
     font-size: 2.5rem; /* Equivalent to 40px */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to make text more visible */
 }
 
 p.lead {
     font-size: 1.125rem; /* Equivalent to 18px */
     font-family: 'Ubuntu Mono', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to make text more visible */
 }
 
 /* Floating Elements (Icon + Hamburger Button) */

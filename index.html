@@ -10,6 +10,12 @@
   <meta property="og:image" content="https://jaxonville.com/files/jdwob_150x150.png">
   <meta property="og:url" content="https://jaxonville.com">
   <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/files/jdwob_150x150.png" sizes="150x150">
+  <!-- Need to resize icon for these
+  <link rel="apple-touch-icon" sizes="180x180" href="/files/jdwob_150x150.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/files/jdwob_150x150.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/files/jdwob_150x150.png">
+  -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -19,13 +25,14 @@
       "url": "https://jaxonville.com/"
     }
   </script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bootstrap-4.5.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Google Fonts (Rubik Mono One and Ubuntu Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -83,28 +90,30 @@
 </section>
 
 <!-- Spacer (Dark Grey) -->
-<div class="spacer"></div>
+<div class="spacer hero-transition-gradient"></div>
 
 <!-- Bio Section -->
 <section id="bio-section" class="bio-section text-center py-5">
   <div class="container fade-in">
     <h2>About Me</h2>
     <p class="bio-text">
-      I started with projects for things I wanted but didn’t have yet—like a Python scraper to hunt down the best deals
-      on my dream “supercomputer,” an HP Pavilion Slim. After gathering all my gear, I dove into coding, adding features
-      to my favorite game, Half-Life 2, in GLua. I even set up my own game server, built exactly the way I wanted it, down
-      to the pixel, for up to 10 players.</br></br>
+      Hi, I'm Jaxon — a Software Developer with a strong foundation in fullstack development, system architecture, and
+      automation. I specialize in <a href="https://www.linkedin.com/in/jaxondupre/overlay/1753901432123/single-media-viewer/?profileId=ACoAADK47J4BwrtlBq38O3jOI_SSKLfJUl8b45k" target="_blank">Drupal, Laravel, PHP, HTML/CSS/JS, and more</a>. If I don't understand something, I will
+      make sure I do soon.<br><br>
 
-      Of course, no game is complete without a welcoming webpage! So, I created a static site with HTML and CSS. I had no clue
-      what the heck a "framework" was so of course this was all vanilla/hand styled. By the end, I had my server, a website,
-      and a 2010 computer holding it all together—a multi-platform project I hadn’t even realized I was planning but executed
-      to my own high standards.</br></br>
+      Beyond traditional web development, I manage a variety of self-hosted services in my homelab, including <a href="https://status.jaxonville.com/status/homelab" target="_blank">Uptime
+      Kuma,</a> Trilium, VPNs, and pfSense virtualization. I design secure network architectures using Cloudflare proxies
+      and implement real-time monitoring with Grafana and InfluxDB.<br><br>
 
-      Fast forward to today, and I’m still building: now providing web engineering services in PHP, JavaScript, and more
-      for over 400 clients. My journey may have started with personal projects, but the approach remains much the same.</br></br>
+      Outside of software, my interests extend into <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank">
+      3D printing, basic electrical engineering, and mechanical/automotive
+      engineering</a>. I take pride in maintaining a diverse skill set—allowing me to build the things I need while continuously
+      expanding my knowledge to do more.<br><br>
 
-      Outside of tech, I’m a dedicated mycologist, cultivating mushrooms right in my own home—and I’ve got three dogs who
-      happily supervise my mushroom-growing adventures.
+      I'm also the creator of <a href="https://jaxonvillemushrooms.com/" target="_blank">JaxonvilleMushrooms</a>, a WordPress-powered educational site where I share my work in mycology,
+      e-commerce, and content development.<br><br>
+
+      🚀 Always learning, always building.
     </p>
   </div>
 </section>
@@ -119,7 +128,7 @@
 
     <div class="project-card">
       <div class="project-content">
-        <!--Styling is 200x200 in the css-->
+        <!--Styling is 200x200 in the CSS-->
         <img src="files/jdbow_250x250.png" alt="Project 1 Image" class="project-image">
         <div>
           <h3>JaxonDupre - Portfolio <a href="https://github.com/jjdyo/jaxondupre" target="_blank">
@@ -150,8 +159,8 @@
             JaxonvilleMushrooms is a website/project of mine built using WPEngine.
             I am an avid mycologist (someone who works with fungi) and do great amounts
             of research and cultivation in my free time; Growing a handful of delicious
-            species like lions mane and pioppino. Mushrooms have been around as long as time,
-            and most of the websites that provide much needed information to get started in the
+            species like Lions mane and pioppino. Mushrooms have been around as long as time,
+            and most of the websites that provide much-needed information to get started in the
             hobby seem to be made from around the same era! More often than not, they are confusing,
             outdated, and not properly maintained. Additionally, it's incredibly easy to get lost in the
             scope of the entire hobby and the hundreds of things you can do, but
@@ -166,7 +175,7 @@
       <div class="project-content">
         <img src="files/vogtle_homelab.png" alt="Project 3 Image" class="project-image">
         <div>
-          <h3>Homelab - Virtualization of all types. <a href="https://linkedin.com" target="_blank">
+          <h3>Homelab — Virtualization of all types. <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank">
             <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
           </a>
           </h3>
@@ -178,7 +187,7 @@
             with recreating enterprise-level infrastructure
             networking in a home environment. I’ve set up a dedicated NAT/DMZ layer to
             keep internal services secure and isolated, with web apps safely exposed
-            through Cloudflare reverse proxies.</br></br>
+            through Cloudflare reverse proxies.<br><br>
 
             To keep things visible and accountable,
             I've built a real-time status page using Uptime Kuma, Grafana, and InfluxDB
@@ -205,11 +214,12 @@
       I’ve had the opportunity to work on projects that span web development, infrastructure, and
       automation—supporting over 400 clients across a range of technical challenges. From building
       websites and streamlining backend systems to deploying full-stack features and managing security configurations,
-      my focus has always been on creating practical, scalable solutions that just work.</br></br>
+      my focus has always been on creating practical, scalable solutions that just work.<br><br>
 
       For a detailed breakdown of my experience, including specific roles,
       technologies used, and accomplishments, please feel free to connect
-      with me on LinkedIn or reach out directly. I'd love to share more.
+      with me on <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank">LinkedIn</a> or reach out directly.
+      I'd love to share more.
     </p>
   </div>
 </section>
@@ -220,9 +230,8 @@
 
 
 
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript
+<script src="/bootstrap-4.5.3/js/bootstrap.bundle.min.js"></script> -->
 <script src="script.js"></script>
 </body>
 </html>

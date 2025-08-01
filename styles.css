@@ -37,6 +37,7 @@ p.lead {
     font-size: 1.125rem; /* Equivalent to 18px */
     font-family: 'Ubuntu Mono', monospace;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to make text more visible */
+    color:white;
 }
 
 /* Floating Elements (Icon + Hamburger Button) */

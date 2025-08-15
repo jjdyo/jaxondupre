@@ -85,7 +85,7 @@ p.lead {
     left: 1.25rem;
     display: flex;
     align-items: center;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .floating-icon {
@@ -132,7 +132,7 @@ p.lead {
     width: 100%;
     min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
-    z-index: 1001; /* Ensure it's above floating elements */
+    z-index: 5; /* Ensure it's above floating elements */
     padding: 1.25rem;
     flex-direction: column;
     transform: translateX(-100%);
@@ -147,7 +147,6 @@ p.lead {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 /* Social Icons */
@@ -305,7 +304,7 @@ p.lead {
     .hamburger-btn {
         width: 2rem; /* Make the hamburger icon smaller */
         height: 2rem;
-        z-index: 1001; /* Ensure it's on top of everything */
+        z-index: 10; /* Ensure it's on top of everything */
         display: flex; /* Ensure the hamburger icon is visible */
     }
 
@@ -318,7 +317,7 @@ p.lead {
         top: 0.75rem; /* Slightly closer to the top */
         left: 0.75rem;
         display: flex; /* Ensure the floating elements are visible */
-        z-index: 1000; /* Keep it on top */
+        z-index: 10; /* Keep it on top */
     }
 
     .icon-image {

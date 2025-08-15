@@ -7,6 +7,14 @@ let isMenuOpen = false;
 document.addEventListener('DOMContentLoaded', function() {
     // Start title animation after DOM is loaded
     startTitleAnimation();
+
+    // Add fade-in effect for the mushroom background image
+    setTimeout(function() {
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            heroSection.classList.add('bg-visible');
+        }
+    }, 500); // Delay of 500ms before starting the fade-in
 });
 hamburgerToggle.addEventListener('click', function() {
     if (!isMenuOpen) {

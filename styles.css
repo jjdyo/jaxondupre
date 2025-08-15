@@ -338,9 +338,14 @@ p.lead {
         flex-direction: column;
         justify-content: flex-start; /* Start content from top */
         align-items: flex-start; /* Left align content */
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
         z-index: 999; /* Ensure it's on top of everything */
         overflow-y: auto; /* Allow scrolling for overflowing content */
+    }
+
+    /* Ensure the open state has the correct transition for mobile too */
+    .expanded-menu.open {
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
     }
 
     /* Add margin to the menu items and social icons */

@@ -72,6 +72,9 @@ p.lead {
     width: 1.875rem; /* 30px equivalent */
     height: 1.875rem;
     justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
 .hamburger-btn div {
@@ -182,7 +185,7 @@ p.lead {
 .section-after-hero {
     position: relative;
     margin-top: 0;
-    padding-top: 5rem;
+    padding-top: 25rem !important; /* Increased from 5rem to move content further down */
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
 }
 

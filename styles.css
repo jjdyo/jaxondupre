@@ -15,12 +15,50 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
     height: 100vh;
     background-color: #000000;
-    background-image: url('files/MushroomOutline.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
     color: #000000;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('files/MushroomOutline.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Controls how far up the gradient extends */
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero.bg-visible::before {
+    opacity: 1;
+}
+
+.hero.bg-visible::after {
+    opacity: 1;
 }
 
 .hero-transition-gradient{
@@ -72,12 +110,36 @@ p.lead {
     width: 1.875rem; /* 30px equivalent */
     height: 1.875rem;
     justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    z-index: 1001; /* Ensure it stays above the expanded menu */
+    position: relative;
 }
 
 .hamburger-btn div {
     width: 100%;
     height: 0.25rem; /* 4px equivalent */
     background-color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hamburger animation when menu is open */
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(1) {
+    transform: translateY(0.625rem) rotate(45deg);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(2) {
+    opacity: 0;
+}
+
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(3) {
+    transform: translateY(-0.625rem) rotate(-45deg);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Expanded Menu */
@@ -90,6 +152,7 @@ p.lead {
     background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
     z-index: 900;
     padding: 1.25rem;
+    display: flex;
     flex-direction: column;
     transform: translateX(-100%);
     opacity: 0;
@@ -126,6 +189,8 @@ p.lead {
 .menu-content {
     display: flex;
     flex-direction: column;
+    list-style: none;
+    padding-left: 0;
 }
 
 .menu-item {
@@ -174,10 +239,16 @@ p.lead {
     transition: color 0.3s ease;
 }
 
-/* Spacer between sections */
-.spacer {
-    height: 3.125rem; /* 50px equivalent */
-    background-color: #1a1a1a;
+/* Section spacing and transitions */
+.section-with-margin {
+    margin-top: 3.125rem; /* 50px equivalent - replaces spacer divs */
+}
+
+.section-after-hero {
+    position: relative;
+    margin-top: 0;
+    padding-top: 20rem !important; /* Increased from 8rem to move content much further down */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
 }
 
 /* Fade-in effect for elements */
@@ -185,6 +256,7 @@ p.lead {
     opacity: 0;
     transform: translateY(1.25rem); /* 20px equivalent */
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    will-change: opacity, transform;
 }
 
 .fade-in.visible {
@@ -232,12 +304,6 @@ p.lead {
     font-size: 1rem; /* Equivalent to 14px */
     color: #ccc;
     font-family: 'Ubuntu Mono', monospace;
-}
-
-/* Spacer between sections */
-.spacer {
-    height: 3.125rem; /* 50px equivalent */
-    background-color: #1a1a1a;
 }
 
 /* Add extra padding to the last section for smoother scrolling */
@@ -292,9 +358,20 @@ p.lead {
         flex-direction: column;
         justify-content: flex-start; /* Start content from top */
         align-items: flex-start; /* Left align content */
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
         z-index: 999; /* Ensure it's on top of everything */
         overflow-y: auto; /* Allow scrolling for overflowing content */
+    }
+
+    /* Ensure the open state has the correct transition for mobile too */
+    .expanded-menu.open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
     }
 
     /* Add margin to the menu items and social icons */
@@ -372,9 +449,9 @@ p.lead {
         padding: 0 1rem; /* Add padding to avoid text touching edges */
     }
 
-    /* Ensure Spacers Adjust on Mobile */
-    .spacer {
-        height: 2rem; /* Smaller spacer between sections */
+    /* Adjust section margins on mobile */
+    .section-with-margin {
+        margin-top: 2rem; /* Smaller margin between sections */
     }
 
 }

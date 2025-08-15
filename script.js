@@ -7,41 +7,63 @@ let isMenuOpen = false;
 document.addEventListener('DOMContentLoaded', function() {
     // Start title animation after DOM is loaded
     startTitleAnimation();
-});
-hamburgerToggle.addEventListener('click', function() {
-    if (!isMenuOpen) {
-        openMenu();
-    } else {
-        closeMenu();
-    }
+
+    // Add fade-in effect for the mushroom background image
+    setTimeout(function() {
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            heroSection.classList.add('bg-visible');
+        }
+    }, 50); // Delay of 50ms before starting the fade-in
+
+    // Initialize hamburger menu toggle
+    hamburgerToggle.addEventListener('click', function() {
+        if (!isMenuOpen) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    });
 });
 
 function openMenu() {
-    expandedMenu.classList.add('open'); // Add the open class
+    // Add the open class to trigger CSS transitions
+    expandedMenu.classList.add('open');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
     isMenuOpen = true;
 }
 
 function closeMenu() {
-    expandedMenu.classList.remove('open'); // Remove the open class
+    // Remove the open class to trigger CSS transitions
+    expandedMenu.classList.remove('open');
+    document.body.style.overflow = ''; // Restore scrolling when menu is closed
     isMenuOpen = false;
 }
 
-// Smooth Scroll for internal links with center alignment
+// Smooth Scroll for internal links with offset
 document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId).querySelector('h2'); // Target the h2 element inside the section
+        const targetSection = document.querySelector(targetId);
+        const targetElement = targetSection.querySelector('h2'); // Target the h2 element inside the section
 
         // Adjust for extra space at the bottom for the last section
         const isLastSection = targetId === '#work-experience-section';
         if (isLastSection) {
-            document.querySelector(targetId).style.paddingBottom = '50vh'; // Add space for the last section
+            targetSection.style.paddingBottom = '50vh'; // Add space for the last section
         }
 
-        targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center' // Scroll target element to the center of the viewport
+        // Get the element's position
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+        // Add offset (150px) to position the section further down
+        const offsetPosition = elementPosition - 150;
+
+        // Scroll to the position with offset
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
 
         // Close the menu after clicking on a link (for mobile)
@@ -86,7 +108,8 @@ const observer = new IntersectionObserver((entries, observer) => {
         }
     });
 }, {
-    threshold: 0.25 // Element needs to be fully visible to trigger the fade-in
+    threshold: 0.5, // Increased threshold - element needs to be 50% visible to trigger the fade-in
+    rootMargin: '-100px 0px' // Adds a negative margin to delay the fade-in effect
 });
 
 fadeInElements.forEach(element => {

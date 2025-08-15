@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroSection) {
             heroSection.classList.add('bg-visible');
         }
-    }, 500); // Delay of 500ms before starting the fade-in
+    }, 50); // Delay of 50ms before starting the fade-in
 });
 hamburgerToggle.addEventListener('click', function() {
     if (!isMenuOpen) {

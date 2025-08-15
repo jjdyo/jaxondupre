@@ -10,6 +10,7 @@
   <meta property="og:image" content="https://jaxonville.com/files/jdwob_150x150.png">
   <meta property="og:url" content="https://jaxonville.com">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://jaxonville.com">
   <link rel="icon" type="image/png" href="/files/jdwob_150x150.png" sizes="150x150">
   <!-- Need to resize icon for these
   <link rel="apple-touch-icon" sizes="180x180" href="/files/jdwob_150x150.png">
@@ -25,6 +26,25 @@
       "url": "https://jaxonville.com/"
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jaxon Dupre",
+      "url": "https://jaxonville.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/jaxondupre/",
+        "https://github.com/jjdyo",
+        "https://jaxonvillemushrooms.com/"
+      ],
+      "jobTitle": "Software Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Jaxonville"
+      },
+      "description": "Fullstack web developer, homelab enthusiast, and mycology researcher."
+    }
+  </script>
   <link rel="stylesheet" href="/bootstrap-4.5.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 
@@ -36,51 +56,57 @@
 </head>
 <body>
 
-<!-- Navbar (Floating Icon and Hamburger Menu) -->
-<div id="floating-elements" class="floating-elements">
-  <a href="#hero" class="floating-icon scroll-link">
-    <img src="files/jdwob_150x150.png" alt="Icon" class="icon-image" fetchpriority="high" decoding="async">
-  </a>
-  <div id="hamburger-toggle" class="hamburger-btn">
-    <div></div>
-    <div></div>
-    <div></div>
+<header>
+  <!-- Navbar (Floating Icon and Hamburger Menu) -->
+  <div id="floating-elements" class="floating-elements">
+    <a href="#hero" class="floating-icon scroll-link">
+      <img src="files/jdwob_150x150.png" alt="Jaxon Dupre Logo" class="icon-image" fetchpriority="high" decoding="async">
+    </a>
+    <button id="hamburger-toggle" class="hamburger-btn" aria-label="Toggle navigation menu">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
   </div>
-</div>
 
-<!-- Expanded Menu (Fading in from the left) -->
-<div id="expanded-menu" class="expanded-menu">
-  <div class="menu-container">
-    <!-- Section Links and Menu Content -->
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank">
-        <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
-      </a>
-      <a href="https://github.com/jjdyo" target="_blank">
-        <img src="files/github.svg" alt="LinkedIn" class="social-icon">
-      </a>
+  <!-- Expanded Menu (Fading in from the left) -->
+  <nav id="expanded-menu" class="expanded-menu" aria-label="Main navigation">
+    <div class="menu-container">
+      <!-- Section Links and Menu Content -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
+          <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+        </a>
+        <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
+          <img src="files/github.svg" alt="GitHub" class="social-icon">
+        </a>
+      </div>
+
+      <ul class="menu-content">
+        <li>
+          <a href="#bio-section" class="scroll-link menu-item">
+            <h2>About Me</h2>
+            <p class="menu-description">Learn about my background, passions, and professional journey.</p>
+          </a>
+        </li>
+        <li>
+          <a href="#projects-section" class="scroll-link menu-item">
+            <h2>Projects</h2>
+            <p class="menu-description">Explore my most recent projects, technologies, and challenges solved.</p>
+          </a>
+        </li>
+        <li>
+          <a href="#work-experience-section" class="scroll-link menu-item">
+            <h2>Work Experience</h2>
+            <p class="menu-description">A deep dive into my work history and the roles I've held.</p>
+          </a>
+        </li>
+      </ul>
     </div>
+  </nav>
+</header>
 
-    <div class="menu-content">
-      <a href="#bio-section" class="scroll-link"><div class="menu-item">
-        <h2>About Me</h2>
-        <p class="menu-description">Learn about my background, passions, and professional journey.</p>
-      </div>
-      </a>
-      <a href="#projects-section" class="scroll-link"><div class="menu-item">
-        <h2>Projects</h2>
-        <p class="menu-description">Explore my most recent projects, technologies, and challenges solved.</p>
-      </div>
-      </a>
-      <a href="#work-experience-section" class="scroll-link"><div class="menu-item">
-        <h2>Work Experience</h2>
-        <p class="menu-description">A deep dive into my work history and the roles I've held.</p>
-      </div>
-      </a>
-    </div>
-  </div>
-</div>
-
+<main>
 <!-- Hero Section -->
 <section id="hero" class="hero d-flex align-items-center justify-content-center">
   <div class="text-center fade-in">
@@ -89,11 +115,8 @@
   </div>
 </section>
 
-<!-- Spacer (Dark Grey) -->
-<div class="spacer hero-transition-gradient"></div>
-
-<!-- Bio Section -->
-<section id="bio-section" class="bio-section text-center py-5">
+<!-- Bio Section with gradient transition -->
+<section id="bio-section" class="bio-section text-center py-5 section-after-hero">
   <div class="container fade-in">
     <h2>About Me</h2>
     <p class="bio-text">
@@ -118,20 +141,16 @@
   </div>
 </section>
 
-<!-- Spacer (Dark Grey) -->
-<div class="spacer"></div>
-
 <!-- Projects Section -->
-<section id="projects-section" class="projects-section py-5">
+<section id="projects-section" class="projects-section py-5 section-with-margin">
   <div class="container">
     <h2 class="text-center">Projects</h2>
 
-    <div class="project-card">
+    <article class="project-card">
       <div class="project-content">
-        <!--Styling is 200x200 in the CSS-->
-        <img src="files/jdbow_250x250.png" alt="Project 1 Image" class="project-image">
+        <img src="files/jdbow_250x250.png" alt="Jaxon Dupre Portfolio Logo" class="project-image">
         <div>
-          <h3>JaxonDupre - Portfolio <a href="https://github.com/jjdyo/jaxondupre" target="_blank">
+          <h3>JaxonDupre - Portfolio <a href="https://github.com/jjdyo/jaxondupre" target="_blank" aria-label="GitHub repository for Jaxon Dupre Portfolio">
             <img src="files/github.svg" alt="GitHub" class="social-icon">
           </a>
           </h3>
@@ -144,14 +163,14 @@
           </p>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="project-card">
+    <article class="project-card">
       <div class="project-content">
         <img src="files/jaxonvillemushrooms_250x250.png" alt="JaxonvilleMushrooms logo depicting a cluster of wandering creamsicle mushrooms" class="project-image">
         <div>
-          <h3>JaxonvilleMushrooms <a href="https://jaxonvillemushrooms.com" target="_blank">
-            <img src="files/webbow.png" alt="github" class="social-icon">
+          <h3>JaxonvilleMushrooms <a href="https://jaxonvillemushrooms.com" target="_blank" aria-label="JaxonvilleMushrooms website">
+            <img src="files/webbow.png" alt="Website link" class="social-icon">
           </a>
           </h3>
           <h4 class="subtitle">Mushroom gear, blogs, education, and more from Jaxon in Jacksonville.</h4>
@@ -169,13 +188,13 @@
           </p>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="project-card">
+    <article class="project-card">
       <div class="project-content">
-        <img src="files/vogtle_homelab.png" alt="Project 3 Image" class="project-image">
+        <img src="files/vogtle_homelab.png" alt="Homelab setup showing server rack with Proxmox and pfSense" class="project-image">
         <div>
-          <h3>Homelab — Virtualization of all types. <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank">
+          <h3>Homelab — Virtualization of all types. <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank" aria-label="LinkedIn projects page">
             <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
           </a>
           </h3>
@@ -197,17 +216,14 @@
           </p>
         </div>
       </div>
-    </div>
+    </article>
 
   </div>
 </section>
 
 
-<!-- Spacer (Dark Grey) -->
-<div class="spacer"></div>
-
 <!-- Work Experience Section -->
-<section id="work-experience-section" class="work-experience-section text-center py-5">
+<section id="work-experience-section" class="work-experience-section text-center py-5 section-with-margin">
   <div class="container">
     <h2>Work Experience</h2>
     <p>
@@ -224,14 +240,28 @@
   </div>
 </section>
 
-<div class="spacer"></div>
-<div class="spacer"></div>
-<div class="spacer"></div>
+</main>
 
-
+<footer class="mt-5 py-4 text-center">
+  <div class="container">
+    <p>© <span id="current-year">2023</span> Jaxon Dupre. All rights reserved.</p>
+    <div class="social-icons justify-content-center">
+      <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
+        <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
+        <img src="files/github.svg" alt="GitHub" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
 
 <!-- JavaScript
 <script src="/bootstrap-4.5.3/js/bootstrap.bundle.min.js"></script> -->
 <script src="script.js"></script>
+<script>
+  // Update copyright year automatically
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

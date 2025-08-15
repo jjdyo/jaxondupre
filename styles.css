@@ -174,10 +174,16 @@ p.lead {
     transition: color 0.3s ease;
 }
 
-/* Spacer between sections */
-.spacer {
-    height: 3.125rem; /* 50px equivalent */
-    background-color: #1a1a1a;
+/* Section spacing and transitions */
+.section-with-margin {
+    margin-top: 3.125rem; /* 50px equivalent - replaces spacer divs */
+}
+
+.section-after-hero {
+    position: relative;
+    margin-top: 0;
+    padding-top: 5rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
 }
 
 /* Fade-in effect for elements */
@@ -232,12 +238,6 @@ p.lead {
     font-size: 1rem; /* Equivalent to 14px */
     color: #ccc;
     font-family: 'Ubuntu Mono', monospace;
-}
-
-/* Spacer between sections */
-.spacer {
-    height: 3.125rem; /* 50px equivalent */
-    background-color: #1a1a1a;
 }
 
 /* Add extra padding to the last section for smoother scrolling */
@@ -372,9 +372,9 @@ p.lead {
         padding: 0 1rem; /* Add padding to avoid text touching edges */
     }
 
-    /* Ensure Spacers Adjust on Mobile */
-    .spacer {
-        height: 2rem; /* Smaller spacer between sections */
+    /* Adjust section margins on mobile */
+    .section-with-margin {
+        margin-top: 2rem; /* Smaller margin between sections */
     }
 
 }

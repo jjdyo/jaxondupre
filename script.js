@@ -16,33 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 50); // Delay of 50ms before starting the fade-in
 });
-hamburgerToggle.addEventListener('click', function() {
-    if (!isMenuOpen) {
-        openMenu();
-    } else {
-        closeMenu();
-    }
-});
-
-function openMenu() {
-    expandedMenu.classList.add('open'); // Add the open class
-    isMenuOpen = true;
-
-    // On mobile, we want to ensure the menu stays visible during transition
-    // This timeout ensures the menu has time to become visible before any other actions
-    setTimeout(function() {
-        // Optional: Hide floating elements when menu is open
-        // floatingElements.style.visibility = 'hidden';
-    }, 50);
-}
-
-function closeMenu() {
-    expandedMenu.classList.remove('open'); // Remove the open class
-    isMenuOpen = false;
-
-    // Make sure floating elements are visible when menu is closed
-    // floatingElements.style.visibility = 'visible';
-}
 
 // Smooth Scroll for internal links with offset
 document.querySelectorAll('.scroll-link').forEach(link => {

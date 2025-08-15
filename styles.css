@@ -125,28 +125,43 @@ p.lead {
 }
 
 /* Expanded Menu */
+/* Base state (closed) */
 .expanded-menu {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
-    z-index: 5; /* Ensure it's above floating elements */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 5;
     padding: 1.25rem;
+    display: flex;
     flex-direction: column;
+    overflow-y: auto;
+
+    /* animate these */
     transform: translateX(-100%);
     opacity: 0;
+
+    /* the key: visibility hides AFTER the animation finishes */
     visibility: hidden;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    display: flex; /* Ensure it's displayed as flex */
-    overflow-y: auto; /* Allow scrolling for overflowing content */
+    transition:
+            transform 0.5s ease-in-out,
+            opacity 0.5s ease-in-out,
+            visibility 0s linear 0.5s; /* hide after 0.5s */
+    will-change: transform, opacity;
 }
 
+/* Open state */
 .expanded-menu.open {
     transform: translateX(0);
     opacity: 1;
+
+    /* show immediately when opening */
     visibility: visible;
+    transition:
+            transform 0.5s ease-in-out,
+            opacity 0.5s ease-in-out,
+            visibility 0s; /* no delay when showing */
 }
 
 /* Social Icons */
@@ -327,12 +342,43 @@ p.lead {
     }
 
     /* Full-screen expanded menu - mobile specific overrides */
+    /* Base state (closed) */
     .expanded-menu {
-        width: 100vw; /* Full width */
-        height: 100vh; /* Full height */
-        padding: 2rem; /* Add padding for the content */
-        justify-content: flex-start; /* Start content from top */
-        align-items: flex-start; /* Left align content */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 5;
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+
+        /* animate these */
+        transform: translateX(-100%);
+        opacity: 0;
+
+        /* the key: visibility hides AFTER the animation finishes */
+        visibility: hidden;
+        transition:
+                transform 0.5s ease-in-out,
+                opacity 0.5s ease-in-out,
+                visibility 0s linear 0.5s; /* hide after 0.5s */
+        will-change: transform, opacity;
+    }
+
+    /* Open state */
+    .expanded-menu.open {
+        transform: translateX(0);
+        opacity: 1;
+
+        /* show immediately when opening */
+        visibility: visible;
+        transition:
+                transform 0.5s ease-in-out,
+                opacity 0.5s ease-in-out,
+                visibility 0s; /* no delay when showing */
     }
 
     /* Mobile-specific open state styles (if needed) */

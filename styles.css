@@ -132,20 +132,22 @@ p.lead {
     width: 100%;
     min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
-    z-index: 900;
+    z-index: 1001; /* Ensure it's above floating elements */
     padding: 1.25rem;
     flex-direction: column;
     transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    display: flex; /* Ensure it's displayed as flex */
+    overflow-y: auto; /* Allow scrolling for overflowing content */
 }
 
 .expanded-menu.open {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 /* Social Icons */
@@ -325,28 +327,17 @@ p.lead {
         height: 100%;
     }
 
-    /* Full-screen expanded menu */
+    /* Full-screen expanded menu - mobile specific overrides */
     .expanded-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
         width: 100vw; /* Full width */
         height: 100vh; /* Full height */
-        background-color: rgba(0, 0, 0, 0.9); /* Darken background */
         padding: 2rem; /* Add padding for the content */
-        display: flex;
-        flex-direction: column;
         justify-content: flex-start; /* Start content from top */
         align-items: flex-start; /* Left align content */
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
-        z-index: 999; /* Ensure it's on top of everything */
-        overflow-y: auto; /* Allow scrolling for overflowing content */
     }
 
-    /* Ensure the open state has the correct transition for mobile too */
-    .expanded-menu.open {
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
-    }
+    /* Mobile-specific open state styles (if needed) */
+    /* We're using the general .expanded-menu.open styles defined above */
 
     /* Add margin to the menu items and social icons */
     .menu-container {
@@ -386,9 +377,8 @@ p.lead {
     }
 
     /* Hide floating elements ONLY when expanded menu is open */
-    .expanded-menu.open ~ .floating-elements {
-        display: none;
-    }
+    /* This approach doesn't work because .floating-elements is not a sibling of .expanded-menu */
+    /* Instead, we'll handle this with JavaScript */
 
     /* Adjust Project Cards for Mobile */
     .project-content {

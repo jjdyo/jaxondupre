@@ -15,7 +15,30 @@ document.addEventListener('DOMContentLoaded', function() {
             heroSection.classList.add('bg-visible');
         }
     }, 50); // Delay of 50ms before starting the fade-in
+
+    // Initialize hamburger menu toggle
+    hamburgerToggle.addEventListener('click', function() {
+        if (!isMenuOpen) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    });
 });
+
+function openMenu() {
+    // Add the open class to trigger CSS transitions
+    expandedMenu.classList.add('open');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    isMenuOpen = true;
+}
+
+function closeMenu() {
+    // Remove the open class to trigger CSS transitions
+    expandedMenu.classList.remove('open');
+    document.body.style.overflow = ''; // Restore scrolling when menu is closed
+    isMenuOpen = false;
+}
 
 // Smooth Scroll for internal links with offset
 document.querySelectorAll('.scroll-link').forEach(link => {

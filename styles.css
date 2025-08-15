@@ -85,7 +85,7 @@ p.lead {
     left: 1.25rem;
     display: flex;
     align-items: center;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .floating-icon {
@@ -116,52 +116,55 @@ p.lead {
     outline: none;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    z-index: 1001; /* Ensure it stays above the expanded menu */
+    position: relative;
 }
 
 .hamburger-btn div {
     width: 100%;
     height: 0.25rem; /* 4px equivalent */
     background-color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hamburger animation when menu is open */
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(1) {
+    transform: translateY(0.625rem) rotate(45deg);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(2) {
+    opacity: 0;
+}
+
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(3) {
+    transform: translateY(-0.625rem) rotate(-45deg);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Expanded Menu */
-/* Base state (closed) */
 .expanded-menu {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
+    z-index: 900;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-
-    /* animate these */
     transform: translateX(-100%);
     opacity: 0;
-
-    /* the key: visibility hides AFTER the animation finishes */
     visibility: hidden;
-    transition:
-            transform 0.5s ease-in-out,
-            opacity 0.5s ease-in-out,
-            visibility 0s linear 0.5s; /* hide after 0.5s */
-    will-change: transform, opacity;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
 }
 
-/* Open state */
 .expanded-menu.open {
     transform: translateX(0);
     opacity: 1;
-
-    /* show immediately when opening */
     visibility: visible;
-    transition:
-            transform 0.5s ease-in-out,
-            opacity 0.5s ease-in-out,
-            visibility 0s; /* no delay when showing */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
 }
 
 /* Social Icons */
@@ -253,6 +256,7 @@ p.lead {
     opacity: 0;
     transform: translateY(1.25rem); /* 20px equivalent */
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    will-change: opacity, transform;
 }
 
 .fade-in.visible {
@@ -319,7 +323,7 @@ p.lead {
     .hamburger-btn {
         width: 2rem; /* Make the hamburger icon smaller */
         height: 2rem;
-        z-index: 10; /* Ensure it's on top of everything */
+        z-index: 1001; /* Ensure it's on top of everything */
         display: flex; /* Ensure the hamburger icon is visible */
     }
 
@@ -332,7 +336,7 @@ p.lead {
         top: 0.75rem; /* Slightly closer to the top */
         left: 0.75rem;
         display: flex; /* Ensure the floating elements are visible */
-        z-index: 10; /* Keep it on top */
+        z-index: 1000; /* Keep it on top */
     }
 
     .icon-image {
@@ -341,48 +345,34 @@ p.lead {
         height: 100%;
     }
 
-    /* Full-screen expanded menu - mobile specific overrides */
-    /* Base state (closed) */
+    /* Full-screen expanded menu */
     .expanded-menu {
         position: fixed;
-        top: 0; left: 0;
-        width: 100%;
-        min-height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 5;
-        padding: 1.25rem;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full width */
+        height: 100vh; /* Full height */
+        background-color: rgba(0, 0, 0, 0.9); /* Darken background */
+        padding: 2rem; /* Add padding for the content */
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
-
-        /* animate these */
+        justify-content: flex-start; /* Start content from top */
+        align-items: flex-start; /* Left align content */
         transform: translateX(-100%);
         opacity: 0;
-
-        /* the key: visibility hides AFTER the animation finishes */
         visibility: hidden;
-        transition:
-                transform 0.5s ease-in-out,
-                opacity 0.5s ease-in-out,
-                visibility 0s linear 0.5s; /* hide after 0.5s */
-        will-change: transform, opacity;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+        z-index: 999; /* Ensure it's on top of everything */
+        overflow-y: auto; /* Allow scrolling for overflowing content */
     }
 
-    /* Open state */
+    /* Ensure the open state has the correct transition for mobile too */
     .expanded-menu.open {
         transform: translateX(0);
         opacity: 1;
-
-        /* show immediately when opening */
         visibility: visible;
-        transition:
-                transform 0.5s ease-in-out,
-                opacity 0.5s ease-in-out,
-                visibility 0s; /* no delay when showing */
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
     }
-
-    /* Mobile-specific open state styles (if needed) */
-    /* We're using the general .expanded-menu.open styles defined above */
 
     /* Add margin to the menu items and social icons */
     .menu-container {
@@ -422,8 +412,9 @@ p.lead {
     }
 
     /* Hide floating elements ONLY when expanded menu is open */
-    /* This approach doesn't work because .floating-elements is not a sibling of .expanded-menu */
-    /* Instead, we'll handle this with JavaScript */
+    .expanded-menu.open ~ .floating-elements {
+        display: none;
+    }
 
     /* Adjust Project Cards for Mobile */
     .project-content {

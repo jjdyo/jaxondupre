@@ -1,5 +1,5 @@
 {
-  "name": "jaxonville-portfolio",            // base name (not used directly)
+  "name": "jaxonville-portfolio-worker",            // base name (not used directly)
   "compatibility_date": "2024-08-16",
   "assets": { "directory": "./" },
 
@@ -9,10 +9,10 @@
       "routes": ["dev.jaxonville.com/*"],
       "vars": { "ENVIRONMENT": "development" }
     },
-    "production": {
-      "name": "jaxonville-portfolio-prod",   // <-- separate service
+    "main": {
+      "name": "jaxonville-portfolio-main",   // <-- separate service
       "routes": ["jaxonville.com/*", "www.jaxonville.com/*"],
-      "vars": { "ENVIRONMENT": "production" }
+      "vars": { "ENVIRONMENT": "main" }
     }
   }
 }

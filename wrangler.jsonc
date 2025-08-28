@@ -4,12 +4,23 @@
   "assets": { "directory": "./" },
 
   "env": {
+    "main": {
+      "name": "jaxondupre-portfolio-worker",
+      "routes": [
+        "jaxonville.com/*",
+        "www.jaxonville.com/*"
+      ],
+      "vars": {
+        "ENVIRONMENT": "main"
+      }
+    },
+
     "dev": {
       "name": "dev-jaxondupre-portfolio-worker",
-      "routes": ["dev.jaxonville.com/*"]
-    },
-    "production": {
-      "routes": ["jaxonville.com/*", "www.jaxonville.com/*"]
+      "routes": ["dev.jaxonville.com/*"],
+      "vars": {
+        "ENVIRONMENT": "development"
+      }
     }
   }
 }

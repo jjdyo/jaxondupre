@@ -1,13 +1,15 @@
 {
-  "name": "dev-jaxonville-portfolio",
+  "name": "jaxondupre-portfolio-worker", // default
   "compatibility_date": "2024-08-16",
   "assets": { "directory": "./" },
 
-  "routes": [
-    "dev.jaxonville.com/*"
-  ],
-
-  "vars": {
-    "ENVIRONMENT": "dev"
+  "env": {
+    "dev": {
+      "name": "dev-jaxondupre-portfolio-worker",
+      "routes": ["dev.jaxonville.com/*"]
+    },
+    "production": {
+      "routes": ["jaxonville.com/*", "www.jaxonville.com/*"]
+    }
   }
 }

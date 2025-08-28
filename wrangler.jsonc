@@ -1,14 +1,16 @@
 {
-  "name": "jaxondupre-portfolio-worker",
+  "name": "jaxonville-portfolio",            // base name (not used directly)
   "compatibility_date": "2024-08-16",
   "assets": { "directory": "./" },
 
   "env": {
     "dev": {
+      "name": "jaxonville-portfolio-dev",    // <-- separate service
       "routes": ["dev.jaxonville.com/*"],
       "vars": { "ENVIRONMENT": "development" }
     },
     "production": {
+      "name": "jaxonville-portfolio-prod",   // <-- separate service
       "routes": ["jaxonville.com/*", "www.jaxonville.com/*"],
       "vars": { "ENVIRONMENT": "production" }
     }

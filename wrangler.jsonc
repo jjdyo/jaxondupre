@@ -1,0 +1,37 @@
+{
+  "name": "jaxonville-portfolio",
+  "pages_build_output_dir": "./",
+  "compatibility_date": "2024-08-16",
+
+  // Define environments for dev and production
+  "env": {
+    "dev": {
+      "routes": [
+        { "pattern": "dev.jaxonville.com/*", "custom_domain": true }
+      ],
+      // Optional: different vars for dev environment
+      "vars": {
+        "ENVIRONMENT": "development"
+      }
+    },
+    "production": {
+      "routes": [
+        { "pattern": "jaxonville.com/*", "custom_domain": true },
+        { "pattern": "www.jaxonville.com/*", "custom_domain": true }
+      ],
+      // Optional: different vars for production
+      "vars": {
+        "ENVIRONMENT": "production"
+      }
+    }
+  },
+
+  // Optional: turn on Node.js compat if you later add Pages Functions that use Node APIs.
+  // "compatibility_flags": ["nodejs_compat"]
+
+  // Optional bindings if you ever add Pages Functions:
+  // "kv_namespaces": [],
+  // "vars": {},
+  // "r2_buckets": [],
+  // "d1_databases": []
+}

@@ -46,9 +46,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 2rem;
     z-index: 1;
     display: flex;
-    align-items: center;
+    /* Keep the plant visually centered, but anchor it slightly lower so it sits
+       naturally above the hero text on a wide range of aspect ratios. */
+    align-items: flex-end;
     justify-content: center;
-    transform: translateY(10px);
+    transform: translateY(24px);
 }
 
 /* Vine SVG styling */
@@ -241,7 +243,8 @@ footer .social-icon {
     overflow: visible;
     display: block;
     margin: 0 auto;
-    transform: translateX(-6px);
+    /* Let the container do the positioning so the SVG stays truly centered. */
+    transform: translateX(0);
 }
 
 .cannabis-plant .stem {

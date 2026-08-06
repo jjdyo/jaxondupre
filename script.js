@@ -105,8 +105,10 @@ window.addEventListener('scroll', function() {
 
     // Update vine growth
     const drawOffset = 1000 - (scrollPercent * 1000);
-    if (vineLeft) vineLeft.style.strokeDashoffset = drawOffset;
-    if (vineRight) vineRight.style.strokeDashoffset = drawOffset;
+    const vines = document.querySelectorAll('.vine-path:not(.vine-extra)');
+    vines.forEach(vine => {
+        vine.style.strokeDashoffset = drawOffset;
+    });
 });
 
 // Fade-in effect for elements

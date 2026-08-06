@@ -2,7 +2,14 @@
 body {
     font-family: 'Ubuntu Mono', monospace;
     color: #e0e0e0;
-    background-color: #0d1b1e; /* Deep dark green/teal */
+    background: linear-gradient(180deg, 
+        #0d1b1e 0%, 
+        #1a2a1b 20%, 
+        #1a2a1b 70%, 
+        #2c1e14 90%, 
+        #3d2b1f 100%
+    );
+    background-attachment: fixed;
     font-size: 1rem;
     overflow-x: hidden;
 }
@@ -15,7 +22,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Plant/Earth Theme Overrides */
 .hero {
     height: 100vh;
-    background-color: #0d1b1e;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -45,37 +51,58 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 2; /* Moved above sections but below text-content which is z-index 1? Wait. */
+    z-index: 2;
     opacity: 0.6;
 }
 
 .vine-path {
     fill: none;
-    stroke: #6d8a64; /* Lighter green for better visibility */
+    stroke: #5d4037; /* Brown color */
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
     transition: stroke-dashoffset 0.1s linear;
+    transform-origin: center top;
 }
 
 .vine-animate {
-    animation: vine-wiggle 10s ease-in-out infinite;
+    animation: vine-sway 6s ease-in-out infinite;
 }
 
-@keyframes vine-wiggle {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(2px); }
+@keyframes vine-sway {
+    0%, 100% { 
+        transform: translateX(0) rotate(0deg); 
+    }
+    33% { 
+        transform: translateX(10px) rotate(1deg); 
+    }
+    66% { 
+        transform: translateX(-10px) rotate(-1deg); 
+    }
 }
 
 .vine-extra {
     opacity: 0;
     stroke-dasharray: 1000;
     stroke-dashoffset: 0; /* Fully grown, but hidden by opacity */
-    animation: vine-wiggle 15s ease-in-out infinite, vine-fade 20s ease-in-out infinite;
+    animation: vine-sway-slow 8s ease-in-out infinite, vine-fade 20s ease-in-out infinite;
+}
+
+@keyframes vine-sway-slow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(15px); }
 }
 
 .vine-extra-2 {
-    animation-delay: -10s;
+    animation-delay: -4s;
+}
+
+.vine-extra-3 {
+    animation-delay: -8s;
+}
+
+.vine-extra-4 {
+    animation-delay: -12s;
 }
 
 @keyframes vine-fade {
@@ -89,31 +116,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bio-section {
-    background: linear-gradient(180deg, #0d1b1e 0%, #1a2a1b 100%);
     position: relative;
     z-index: 1;
 }
 
 .projects-section {
-    background-color: #1a2a1b;
     position: relative;
     z-index: 1;
 }
 
 .work-experience-section {
-    background: linear-gradient(180deg, #1a2a1b 0%, #2c1e14 100%); /* Transition to earth */
     position: relative;
     z-index: 1;
 }
 
 .project-card {
-    background-color: #1a2a1b; /* Solid dark green */
+    background-color: rgba(26, 42, 27, 0.9); /* Darker green, higher opacity for better contrast */
     border: 1px solid #4b6345;
     padding: 1.25rem;
     margin-bottom: 1.875rem;
     border-radius: 0.5rem;
     position: relative;
     z-index: 11;
+    backdrop-filter: blur(5px); /* Optional: add blur to help text pop against vines */
 }
 
 .project-card h3 {
@@ -125,9 +150,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 footer {
-    background-color: #2c1e14; /* Earthy brown */
     color: #d4e4bc;
-    border-top: 10px solid #3d2b1f; /* "Soil" layer */
+    border-top: 10px solid rgba(61, 43, 31, 0.5); /* "Soil" layer */
     position: relative;
     z-index: 1;
     overflow: hidden; /* For the rotating core */
@@ -149,16 +173,21 @@ footer {
     border-radius: 50%;
     filter: blur(20px);
     opacity: 0.4;
-    animation: core-rotate-pulse 10s linear infinite;
+    animation: core-rotate-pulse 6s ease-in-out infinite; /* Faster and smoother pulse */
     position: relative;
 }
 
 @keyframes core-rotate-pulse {
-    0% { transform: rotate(0deg) scale(1); opacity: 0.4; }
-    25% { transform: rotate(90deg) scale(1.1); opacity: 0.6; }
-    50% { transform: rotate(180deg) scale(1); opacity: 0.4; }
-    75% { transform: rotate(270deg) scale(1.1); opacity: 0.6; }
-    100% { transform: rotate(360deg) scale(1); opacity: 0.4; }
+    0%, 100% { 
+        transform: rotate(0deg) scale(1); 
+        opacity: 0.4; 
+        filter: blur(20px);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.15); 
+        opacity: 0.7; 
+        filter: blur(25px);
+    }
 }
 
 .speckle {

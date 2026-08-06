@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start title animation after DOM is loaded
     startTitleAnimation();
 
+    // Initialize vine flow overlay + animation loop
+    initVineFlow();
+
     // Add fade-in effect for the mushroom background image
     setTimeout(function() {
         const heroSection = document.getElementById('hero');
@@ -25,6 +28,88 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function initVineFlow() {
+    const svg = document.querySelector('.vines-svg');
+    if (!svg) return;
+
+    // Initialize growth progress variable immediately (so the overlay doesn’t flash on load)
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = totalHeight > 0 ? (window.scrollY / totalHeight) : 0;
+    document.documentElement.style.setProperty('--vine-grow', String(scrollPercent));
+
+    // Clone each vine path to create a moving highlight overlay.
+    // This keeps the main vine available for scroll-linked growth while the overlay provides
+    // a subtle top↔bottom “flow” illusion with per-vine randomized sine patterns.
+    const baseVines = Array.from(svg.querySelectorAll('.vine-path'));
+    const flowVines = [];
+
+    baseVines.forEach((base, i) => {
+        const clone = base.cloneNode(true);
+        clone.removeAttribute('id');
+        clone.classList.remove('vine-extra', 'vine-extra-1', 'vine-extra-2', 'vine-extra-3', 'vine-extra-4');
+        clone.classList.add('vine-flow');
+
+        // Deterministic “random” parameters by index (stable across reloads)
+        const seed = (i + 1) * 9973;
+        const rand01 = (n) => {
+            const x = Math.sin(n) * 10000;
+            return x - Math.floor(x);
+        };
+
+        const speed = 18 + rand01(seed + 1) * 26;      // px-ish per second in dashoffset units
+        const freq = 0.6 + rand01(seed + 2) * 1.1;      // Hz-ish
+        const phase = rand01(seed + 3) * Math.PI * 2;
+        const amp = 10 + rand01(seed + 4) * 18;         // sine amplitude
+
+        // Vary dash pattern per vine for a more organic look
+        const dash = 4 + Math.floor(rand01(seed + 5) * 10); // 4..13
+        const gap = 16 + Math.floor(rand01(seed + 6) * 26); // 16..41
+        clone.style.strokeDasharray = `${dash} ${gap}`;
+
+        flowVines.push({
+            el: clone,
+            speed,
+            freq,
+            phase,
+            amp,
+            dir: rand01(seed + 7) > 0.5 ? 1 : -1,
+        });
+
+        // Insert after the base path so it renders on top
+        base.insertAdjacentElement('afterend', clone);
+    });
+
+    let rafId = 0;
+    const start = performance.now();
+
+    const tick = (now) => {
+        const t = (now - start) / 1000;
+        for (const v of flowVines) {
+            // Combine steady drift + sinusoid to create “natural” motion primarily along the vine
+            const drift = v.dir * v.speed * t;
+            const wave = Math.sin((t * v.freq * Math.PI * 2) + v.phase) * v.amp;
+            v.el.style.strokeDashoffset = `${drift + wave}`;
+        }
+        rafId = requestAnimationFrame(tick);
+    };
+
+    // If user prefers reduced motion, keep the overlay subtle and avoid continuous animation.
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+        rafId = requestAnimationFrame(tick);
+    }
+
+    // Safety: stop animation when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = 0;
+        } else if (!reduceMotion && !rafId) {
+            rafId = requestAnimationFrame(tick);
+        }
+    });
+}
 
 function openMenu() {
     // Add the open class to trigger CSS transitions
@@ -94,7 +179,7 @@ const vineRight = document.getElementById('vine-right');
 
 window.addEventListener('scroll', function() {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = window.scrollY / totalHeight;
+    const scrollPercent = totalHeight > 0 ? (window.scrollY / totalHeight) : 0;
     
     // Update floating elements visibility
     if (window.scrollY > 100) {
@@ -109,6 +194,9 @@ window.addEventListener('scroll', function() {
     vines.forEach(vine => {
         vine.style.strokeDashoffset = drawOffset;
     });
+
+    // Expose growth progress to CSS so the flow overlay can fade in naturally
+    document.documentElement.style.setProperty('--vine-grow', String(scrollPercent));
 });
 
 // Fade-in effect for elements

@@ -14,6 +14,10 @@ body {
     overflow-x: hidden;
 }
 
+:root {
+    --vine-grow: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Rubik Mono One', sans-serif;
     color: #a3c9a8; /* Muted sage green */
@@ -66,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vine-animate {
-    animation: vine-sway 6s ease-in-out infinite;
+    animation: vine-sway 8s ease-in-out infinite;
 }
 
 @keyframes vine-sway {
@@ -74,10 +78,10 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateX(0) rotate(0deg); 
     }
     33% { 
-        transform: translateX(10px) rotate(1deg); 
+        transform: translateX(2px) rotate(0.4deg); 
     }
     66% { 
-        transform: translateX(-10px) rotate(-1deg); 
+        transform: translateX(-2px) rotate(-0.4deg); 
     }
 }
 
@@ -90,7 +94,24 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes vine-sway-slow {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(15px); }
+    50% { transform: translateX(3px); }
+}
+
+/*
+  Flow highlight overlay:
+  - JS creates a cloned path for each vine with class `vine-flow`.
+  - We keep main vine growth via `stroke-dasharray: 1000; stroke-dashoffset: ...`.
+  - The overlay adds a subtle “sap/flow” impression moving along the vine.
+*/
+.vine-flow {
+    fill: none;
+    stroke: rgba(157, 112, 92, 0.95); /* slightly lighter brown highlight */
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    opacity: calc(var(--vine-grow, 0) * 0.35);
+    will-change: stroke-dashoffset;
 }
 
 .vine-extra-2 {

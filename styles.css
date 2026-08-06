@@ -58,6 +58,31 @@ h1, h2, h3, h4, h5, h6 {
     transition: stroke-dashoffset 0.1s linear;
 }
 
+.vine-animate {
+    animation: vine-wiggle 10s ease-in-out infinite;
+}
+
+@keyframes vine-wiggle {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(2px); }
+}
+
+.vine-extra {
+    opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0; /* Fully grown, but hidden by opacity */
+    animation: vine-wiggle 15s ease-in-out infinite, vine-fade 20s ease-in-out infinite;
+}
+
+.vine-extra-2 {
+    animation-delay: -10s;
+}
+
+@keyframes vine-fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
 .container.fade-in, .container {
     position: relative;
     z-index: 10;
@@ -124,8 +149,16 @@ footer {
     border-radius: 50%;
     filter: blur(20px);
     opacity: 0.4;
-    animation: core-rotate 10s linear infinite;
+    animation: core-rotate-pulse 10s linear infinite;
     position: relative;
+}
+
+@keyframes core-rotate-pulse {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.4; }
+    25% { transform: rotate(90deg) scale(1.1); opacity: 0.6; }
+    50% { transform: rotate(180deg) scale(1); opacity: 0.4; }
+    75% { transform: rotate(270deg) scale(1.1); opacity: 0.6; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.4; }
 }
 
 .speckle {

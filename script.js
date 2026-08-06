@@ -93,7 +93,8 @@ const vineLeft = document.getElementById('vine-left');
 const vineRight = document.getElementById('vine-right');
 
 window.addEventListener('scroll', function() {
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = window.scrollY / totalHeight;
     
     // Update floating elements visibility
     if (window.scrollY > 100) {

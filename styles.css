@@ -258,6 +258,17 @@ footer .social-icon {
     animation: stem-draw 1.1s ease-out forwards;
 }
 
+.cannabis-plant .branch {
+    fill: none;
+    stroke: #3f5b3a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+    animation: branch-draw 0.9s 0.85s ease-out forwards;
+}
+
 .cannabis-plant .fan path {
     fill: none;
     stroke: #6d8a64;
@@ -272,16 +283,19 @@ footer .social-icon {
       If a CSS `transform` is present, it overrides any SVG `transform="..."` attribute.
       So we keep the attach-point translation in CSS (SVG user units) via --tx/--ty.
     */
-    --tx: 0;
-    --ty: 0;
+    --tx: 0px;
+    --ty: 0px;
+    --s: 1;
     transform-origin: 0 0;
     transform: translate(var(--tx), var(--ty)) scale(0);
     opacity: 0;
 }
 
-.cannabis-plant .fan-1 { --tx: 50; --ty: 78; }
-.cannabis-plant .fan-2 { --tx: 50; --ty: 60; }
-.cannabis-plant .fan-3 { --tx: 50; --ty: 42; }
+.cannabis-plant .fan-1 { --tx: 50px; --ty: 78px; --s: 1.18; }
+.cannabis-plant .fan-2 { --tx: 50px; --ty: 60px; --s: 1.00; }
+.cannabis-plant .fan-3 { --tx: 50px; --ty: 42px; --s: 0.84; }
+.cannabis-plant .fan-4 { --tx: 38px; --ty: 58px; --s: 0.92; }
+.cannabis-plant .fan-5 { --tx: 62px; --ty: 56px; --s: 0.92; }
 
 .cannabis-plant .fan-1 {
     animation: fan-unfurl 0.9s 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
@@ -295,14 +309,38 @@ footer .social-icon {
     animation: fan-unfurl 0.9s 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
+.cannabis-plant .fan-4 {
+    animation: fan-unfurl 0.9s 0.80s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.cannabis-plant .fan-5 {
+    animation: fan-unfurl 0.9s 0.88s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
 .cannabis-plant .bud {
-    --tx: 50;
-    --ty: 18;
+    --tx: 50px;
+    --ty: 18px;
+    --s: 1;
+    --delay: 1.1s;
     transform-origin: 0 0;
     transform: translate(var(--tx), var(--ty)) scale(0);
     opacity: 0;
-    animation: bud-pop 0.7s 1.1s ease-out forwards;
+    animation: bud-pop 0.7s var(--delay) ease-out forwards;
 }
+
+.cannabis-plant .bud-1 { --tx: 50px; --ty: 18px; --s: 1.12; --delay: 1.10s; }
+.cannabis-plant .bud-2 { --tx: 48px; --ty: 28px; --s: 1.02; --delay: 1.22s; }
+.cannabis-plant .bud-3 { --tx: 52px; --ty: 40px; --s: 0.96; --delay: 1.34s; }
+.cannabis-plant .bud-4 { --tx: 49px; --ty: 52px; --s: 0.90; --delay: 1.46s; }
+.cannabis-plant .bud-5 { --tx: 50px; --ty: 64px; --s: 0.86; --delay: 1.58s; }
+
+.cannabis-plant .bud-l1 { --tx: 32px; --ty: 28px; --s: 1.00; --delay: 1.18s; }
+.cannabis-plant .bud-l2 { --tx: 34px; --ty: 40px; --s: 0.94; --delay: 1.30s; }
+.cannabis-plant .bud-l3 { --tx: 38px; --ty: 52px; --s: 0.90; --delay: 1.42s; }
+
+.cannabis-plant .bud-r1 { --tx: 68px; --ty: 26px; --s: 1.00; --delay: 1.18s; }
+.cannabis-plant .bud-r2 { --tx: 66px; --ty: 38px; --s: 0.94; --delay: 1.30s; }
+.cannabis-plant .bud-r3 { --tx: 62px; --ty: 50px; --s: 0.90; --delay: 1.42s; }
 
 .cannabis-plant .bud-core {
     fill: #a3c9a8;
@@ -316,35 +354,36 @@ footer .social-icon {
 .cannabis-plant .bud-core,
 .cannabis-plant .bud-nug {
     transform-origin: center;
-    animation: bud-pulse 3.8s 1.8s ease-in-out infinite;
+    animation: none;
 }
 
 @keyframes stem-draw {
     to { stroke-dashoffset: 0; }
 }
 
+@keyframes branch-draw {
+    to { stroke-dashoffset: 0; }
+}
+
 @keyframes fan-unfurl {
     0% {
-        transform: translate(var(--tx), var(--ty)) scale(0.6);
+        transform: translate(var(--tx), var(--ty)) scale(0);
         opacity: 0;
         filter: blur(2px);
     }
     100% {
-        transform: translate(var(--tx), var(--ty)) scale(1);
+        transform: translate(var(--tx), var(--ty)) scale(var(--s));
         opacity: 1;
         filter: blur(0);
     }
 }
 
 @keyframes bud-pop {
-    0% { transform: translate(var(--tx), var(--ty)) scale(0.6); opacity: 0; }
-    100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 1; }
+    0% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(var(--s)); opacity: 1; }
 }
 
-@keyframes bud-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-}
+/* Buds stay still once popped in (no pulsing movement). */
 
 .vine-path {
     stroke-dasharray: 1000;

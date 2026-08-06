@@ -124,6 +124,10 @@
       <!-- Stem (draws upward) -->
       <path class="stem" d="M 50 118 C 50 95, 49 80, 50 62 C 51 45, 52 34, 50 18" />
 
+      <!-- Topped branches / side colas -->
+      <path class="branch branch-left" d="M 50 66 C 44 60, 38 54, 34 46 C 30 38, 29 32, 31 26" />
+      <path class="branch branch-right" d="M 50 64 C 56 58, 62 52, 66 44 C 70 36, 71 30, 69 24" />
+
       <!-- Fan leaves (unfurl in sequence) -->
       <g class="fan fan-1">
         <path class="fan-left" d="M 0 0 C -10 -2, -18 -8, -22 -16 C -14 -14, -8 -10, 0 -6" />
@@ -143,8 +147,111 @@
         <path class="fan-mid" d="M 0 0 C -2 -10, -2 -20, 0 -29 C 2 -20, 2 -10, 0 0" />
       </g>
 
-      <!-- Bud cluster (fatten/pulse subtly) -->
-      <g class="bud">
+      <g class="fan fan-4">
+        <path class="fan-left" d="M 0 0 C -12 -2, -22 -10, -27 -20 C -18 -18, -10 -12, 0 -7" />
+        <path class="fan-right" d="M 0 0 C 12 -2, 22 -10, 27 -20 C 18 -18, 10 -12, 0 -7" />
+        <path class="fan-mid" d="M 0 0 C -2 -9, -2 -18, 0 -26 C 2 -18, 2 -9, 0 0" />
+      </g>
+
+      <g class="fan fan-5">
+        <path class="fan-left" d="M 0 0 C -10 -2, -18 -8, -22 -16 C -14 -14, -8 -10, 0 -6" />
+        <path class="fan-right" d="M 0 0 C 10 -2, 18 -8, 22 -16 C 14 -14, 8 -10, 0 -6" />
+        <path class="fan-mid" d="M 0 0 C -2 -8, -2 -16, 0 -22 C 2 -16, 2 -8, 0 0" />
+      </g>
+
+      <!-- Buds (puff up along the cola) -->
+      <g class="bud bud-1">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-2">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-3">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-4">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-5">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <!-- Side colas buds -->
+      <g class="bud bud-l1">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-l2">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-l3">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-r1">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-r2">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
+      </g>
+
+      <g class="bud bud-r3">
         <circle class="bud-core" cx="0" cy="0" r="5" />
         <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
         <circle class="bud-nug" cx="6" cy="4" r="3.5" />

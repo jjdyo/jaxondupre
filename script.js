@@ -3,6 +3,9 @@ const hamburgerToggle = document.getElementById('hamburger-toggle');
 const expandedMenu = document.getElementById('expanded-menu');
 let isMenuOpen = false;
 
+// Vine animation state (initialized in initVineFlow)
+let vineWaveTargets = [];
+
 // Wait for DOM to be fully loaded before starting animation
 document.addEventListener('DOMContentLoaded', function() {
     // Start title animation after DOM is loaded
@@ -38,17 +41,47 @@ function initVineFlow() {
     const scrollPercent = totalHeight > 0 ? (window.scrollY / totalHeight) : 0;
     document.documentElement.style.setProperty('--vine-grow', String(scrollPercent));
 
+    // Ensure we have a <defs> to hold masks.
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        svg.insertBefore(defs, svg.firstChild);
+    }
+
     // Clone each vine path to create a moving highlight overlay.
-    // This keeps the main vine available for scroll-linked growth while the overlay provides
-    // a subtle top↔bottom “flow” illusion with per-vine randomized sine patterns.
+    // Additionally, we create a mask per vine so the overlay is revealed ONLY where the base vine is “grown”.
     const baseVines = Array.from(svg.querySelectorAll('.vine-path.vine-side'));
     const flowVines = [];
 
     baseVines.forEach((base, i) => {
+        const originalD = base.getAttribute('d');
+
         const clone = base.cloneNode(true);
         clone.removeAttribute('id');
         clone.classList.remove('vine-extra', 'vine-extra-1', 'vine-extra-2', 'vine-extra-3', 'vine-extra-4');
         clone.classList.add('vine-flow');
+
+        // Mask so the highlight “comes down” with the grown vine.
+        const maskId = `vine-mask-${i + 1}`;
+        const mask = document.createElementNS('http://www.w3.org/2000/svg', 'mask');
+        mask.setAttribute('id', maskId);
+
+        const maskPath = base.cloneNode(true);
+        maskPath.removeAttribute('id');
+        maskPath.removeAttribute('class');
+        maskPath.setAttribute('fill', 'none');
+        maskPath.setAttribute('stroke', '#fff');
+        // A bit wider than the highlight stroke so it doesn't clip.
+        maskPath.setAttribute('stroke-width', '6');
+        maskPath.setAttribute('stroke-linecap', 'round');
+        maskPath.setAttribute('stroke-linejoin', 'round');
+        maskPath.style.strokeDasharray = '1000';
+        maskPath.style.strokeDashoffset = '1000';
+
+        mask.appendChild(maskPath);
+        defs.appendChild(mask);
+
+        clone.setAttribute('mask', `url(#${maskId})`);
 
         // Deterministic “random” parameters by index (stable across reloads)
         const seed = (i + 1) * 9973;
@@ -69,11 +102,15 @@ function initVineFlow() {
 
         flowVines.push({
             el: clone,
+            base,
+            maskPath,
+            originalD,
             speed,
             freq,
             phase,
             amp,
             dir: rand01(seed + 7) > 0.5 ? 1 : -1,
+            spatial: 1.1 + rand01(seed + 8) * 1.2, // waves along the length
         });
 
         // Insert after the base path so it renders on top
@@ -86,10 +123,41 @@ function initVineFlow() {
     const tick = (now) => {
         const t = (now - start) / 1000;
         for (const v of flowVines) {
-            // Combine steady drift + sinusoid to create “natural” motion primarily along the vine
+            // 1) Animate the dashed highlight along the vine.
             const drift = v.dir * v.speed * t;
-            const wave = Math.sin((t * v.freq * Math.PI * 2) + v.phase) * v.amp;
-            v.el.style.strokeDashoffset = `${drift + wave}`;
+            const dashWave = Math.sin((t * v.freq * Math.PI * 2) + v.phase) * v.amp;
+            v.el.style.strokeDashoffset = `${drift + dashWave}`;
+
+            // 2) Sideways-sine motion: make the vine's peaks/troughs travel by shifting phase over time.
+            //    (Think: x = f(y) and the wave moves because phase changes with time.)
+            //    We regenerate a lightweight polyline-ish path from sampled points to keep it static-host friendly.
+            // Reset to the original geometry each frame to avoid feedback/distortion buildup.
+            v.base.setAttribute('d', v.originalD);
+            v.maskPath.setAttribute('d', v.originalD);
+            v.el.setAttribute('d', v.originalD);
+
+            const basePath = v.base;
+            const len = basePath.getTotalLength();
+
+            const samples = 28;
+            const ampX = 0.9 + (v.amp / 40); // subtle lateral movement in viewBox units
+            const phase = (t * v.freq * Math.PI * 2) + v.phase;
+            const spatial = v.spatial * Math.PI * 2;
+
+            let d = '';
+            for (let s = 0; s <= samples; s++) {
+                const p = basePath.getPointAtLength((s / samples) * len);
+                const u = s / samples;
+                const offsetX = Math.sin((u * spatial) + phase) * ampX;
+                const x = p.x + offsetX;
+                const y = p.y;
+                d += (s === 0) ? `M ${x.toFixed(2)} ${y.toFixed(2)}` : ` L ${x.toFixed(2)} ${y.toFixed(2)}`;
+            }
+
+            // Apply the same shape to the base, the highlight, and the mask so everything stays aligned.
+            v.base.setAttribute('d', d);
+            v.el.setAttribute('d', d);
+            v.maskPath.setAttribute('d', d);
         }
         rafId = requestAnimationFrame(tick);
     };
@@ -109,6 +177,9 @@ function initVineFlow() {
             rafId = requestAnimationFrame(tick);
         }
     });
+
+    // Expose mask paths for the scroll handler (so highlights reveal with growth)
+    vineWaveTargets = flowVines.map(v => ({ base: v.base, maskPath: v.maskPath }));
 }
 
 function openMenu() {
@@ -194,6 +265,13 @@ window.addEventListener('scroll', function() {
     vines.forEach(vine => {
         vine.style.strokeDashoffset = drawOffset;
     });
+
+    // Keep the overlay masks in sync so the dashed highlights reveal with the vines.
+    if (vineWaveTargets && vineWaveTargets.length) {
+        for (const t of vineWaveTargets) {
+            t.maskPath.style.strokeDashoffset = String(drawOffset);
+        }
+    }
 
     // Expose growth progress to CSS so the flow overlay can fade in naturally
     document.documentElement.style.setProperty('--vine-grow', String(scrollPercent));

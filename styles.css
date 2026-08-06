@@ -45,6 +45,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 450px;
     margin-bottom: 2rem;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(10px);
 }
 
 /* Vine SVG styling */
@@ -235,6 +239,9 @@ footer .social-icon {
     width: 100%;
     height: 100%;
     overflow: visible;
+    display: block;
+    margin: 0 auto;
+    transform: translateX(-6px);
 }
 
 .cannabis-plant .stem {

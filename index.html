@@ -58,16 +58,12 @@
 
 <!-- Vine Background -->
 <svg class="vines-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-  <path id="vine-left" class="vine-path vine-animate" d="M 10 0 Q 15 25 10 50 Q 5 75 10 100" />
-  <path id="vine-right" class="vine-path vine-animate" d="M 90 0 Q 85 25 90 50 Q 95 75 90 100" />
-  <!-- Additional vines for volume -->
-  <path class="vine-path vine-animate" d="M 12 0 Q 17 30 12 60 Q 7 85 12 100" style="opacity: 0.4; stroke-width: 2;" />
-  <path class="vine-path vine-animate" d="M 88 0 Q 83 20 88 50 Q 93 80 88 100" style="opacity: 0.4; stroke-width: 2;" />
-  <!-- Additional vines that come and go slowly -->
-  <path class="vine-path vine-extra vine-extra-1" d="M 25 0 Q 20 30 30 60 Q 35 80 25 100" />
-  <path class="vine-path vine-extra vine-extra-2" d="M 75 0 Q 80 40 70 70 Q 65 90 75 100" />
-  <path class="vine-path vine-extra vine-extra-3" d="M 40 0 Q 35 45 45 75 Q 50 90 40 100" />
-  <path class="vine-path vine-extra vine-extra-4" d="M 60 0 Q 65 35 55 65 Q 50 85 60 100" />
+  <path id="vine-left" class="vine-path vine-side vine-animate" d="M 10 0 Q 15 25 10 50 Q 5 75 10 100" />
+  <path id="vine-right" class="vine-path vine-side vine-animate" d="M 90 0 Q 85 25 90 50 Q 95 75 90 100" />
+
+  <!-- Additional side vines for volume (kept near edges only) -->
+  <path class="vine-path vine-side vine-animate" d="M 12 0 Q 17 30 12 60 Q 7 85 12 100" style="opacity: 0.4; stroke-width: 2;" />
+  <path class="vine-path vine-side vine-animate" d="M 88 0 Q 83 20 88 50 Q 93 80 88 100" style="opacity: 0.4; stroke-width: 2;" />
 </svg>
 
 <header>
@@ -124,20 +120,37 @@
 <!-- Hero Section -->
 <section id="hero" class="hero">
   <div id="plant-container">
-    <svg viewBox="0 0 100 100" class="blooming-plant">
-      <!-- Stem -->
-      <path d="M 50 100 Q 50 70 50 40" stroke="#4b6345" stroke-width="4" fill="none" />
-      <!-- Left Leaf -->
-      <path class="leaf" d="M 50 80 Q 30 70 20 80 Q 30 90 50 80" fill="#6d8a64" />
-      <!-- Right Leaf -->
-      <path class="leaf" d="M 50 70 Q 70 60 80 70 Q 70 80 50 70" fill="#6d8a64" />
-      <!-- Flower/Bud -->
-      <circle class="flower-center" cx="50" cy="40" r="8" fill="#a3c9a8" />
-      <g class="petals">
-        <circle cx="50" cy="30" r="6" fill="#d4e4bc" />
-        <circle cx="50" cy="50" r="6" fill="#d4e4bc" />
-        <circle cx="40" cy="40" r="6" fill="#d4e4bc" />
-        <circle cx="60" cy="40" r="6" fill="#d4e4bc" />
+    <svg viewBox="0 0 100 120" class="cannabis-plant" aria-hidden="true" focusable="false">
+      <!-- Stem (draws upward) -->
+      <path class="stem" d="M 50 118 C 50 95, 49 80, 50 62 C 51 45, 52 34, 50 18" />
+
+      <!-- Fan leaves (unfurl in sequence) -->
+      <g class="fan fan-1" transform="translate(50 78)">
+        <path class="fan-left" d="M 0 0 C -10 -2, -18 -8, -22 -16 C -14 -14, -8 -10, 0 -6" />
+        <path class="fan-right" d="M 0 0 C 10 -2, 18 -8, 22 -16 C 14 -14, 8 -10, 0 -6" />
+        <path class="fan-mid" d="M 0 0 C -2 -8, -2 -16, 0 -22 C 2 -16, 2 -8, 0 0" />
+      </g>
+
+      <g class="fan fan-2" transform="translate(50 60)">
+        <path class="fan-left" d="M 0 0 C -12 -2, -22 -10, -27 -20 C -18 -18, -10 -12, 0 -7" />
+        <path class="fan-right" d="M 0 0 C 12 -2, 22 -10, 27 -20 C 18 -18, 10 -12, 0 -7" />
+        <path class="fan-mid" d="M 0 0 C -2 -9, -2 -18, 0 -26 C 2 -18, 2 -9, 0 0" />
+      </g>
+
+      <g class="fan fan-3" transform="translate(50 42)">
+        <path class="fan-left" d="M 0 0 C -13 -2, -24 -11, -30 -23 C -19 -20, -10 -13, 0 -8" />
+        <path class="fan-right" d="M 0 0 C 13 -2, 24 -11, 30 -23 C 19 -20, 10 -13, 0 -8" />
+        <path class="fan-mid" d="M 0 0 C -2 -10, -2 -20, 0 -29 C 2 -20, 2 -10, 0 0" />
+      </g>
+
+      <!-- Bud cluster (fatten/pulse subtly) -->
+      <g class="bud" transform="translate(50 18)">
+        <circle class="bud-core" cx="0" cy="0" r="5" />
+        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
+        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
+        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
+        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
       </g>
     </svg>
   </div>

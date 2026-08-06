@@ -41,7 +41,7 @@ function initVineFlow() {
     // Clone each vine path to create a moving highlight overlay.
     // This keeps the main vine available for scroll-linked growth while the overlay provides
     // a subtle top↔bottom “flow” illusion with per-vine randomized sine patterns.
-    const baseVines = Array.from(svg.querySelectorAll('.vine-path'));
+    const baseVines = Array.from(svg.querySelectorAll('.vine-path.vine-side'));
     const flowVines = [];
 
     baseVines.forEach((base, i) => {
@@ -190,7 +190,7 @@ window.addEventListener('scroll', function() {
 
     // Update vine growth
     const drawOffset = 1000 - (scrollPercent * 1000);
-    const vines = document.querySelectorAll('.vine-path:not(.vine-extra)');
+    const vines = document.querySelectorAll('.vine-path.vine-side');
     vines.forEach(vine => {
         vine.style.strokeDashoffset = drawOffset;
     });

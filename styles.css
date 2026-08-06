@@ -1,80 +1,456 @@
 /* General Styling */
 body {
     font-family: 'Ubuntu Mono', monospace;
-    color: #f0f0f0;
-    background-color: #1a1a1a;
-    font-size: 1rem; /* Base font size of 16px */
+    color: #e0e0e0;
+    background: linear-gradient(180deg, 
+        #0d1b1e 0%, 
+        #1a2a1b 20%, 
+        #1a2a1b 70%, 
+        #2c1e14 90%, 
+        #3d2b1f 100%
+    );
+    background-attachment: fixed;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+:root {
+    --vine-grow: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Rubik Mono One', sans-serif;
-    color: #f0f0f0;
+    color: #a3c9a8; /* Muted sage green */
 }
 
-/* Hero Section */
+/* Plant/Earth Theme Overrides */
 .hero {
     height: 100vh;
-    background-color: #000000;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    color: #000000;
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
+.hero::before, .hero::after {
+    display: none; /* Remove old mushroom background */
+}
+
+/* Container for the blooming plant */
+#plant-container {
+    width: 520px;
+    height: 450px;
+    margin-bottom: 2rem;
+    z-index: 1;
+    display: flex;
+    /* Keep the plant visually centered, but anchor it slightly lower so it sits
+       naturally above the hero text on a wide range of aspect ratios. */
+    align-items: flex-end;
+    justify-content: center;
+    transform: translateY(24px);
+}
+
+/* Vine SVG styling */
+.vines-svg {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('files/MushroomOutline.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    z-index: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.6;
 }
 
-.hero::after {
-    content: "";
+.vine-path {
+    fill: none;
+    stroke: #5d4037; /* Brown color */
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dashoffset 0.1s linear;
+    transform-origin: center top;
+}
+
+.vine-animate {
+    animation: vine-sway 8s ease-in-out infinite;
+}
+
+@keyframes vine-sway {
+    0%, 100% { 
+        transform: translateX(0) rotate(0deg); 
+    }
+    33% { 
+        transform: translateX(2px) rotate(0.4deg); 
+    }
+    66% { 
+        transform: translateX(-2px) rotate(-0.4deg); 
+    }
+}
+
+.vine-extra {
+    opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0; /* Fully grown, but hidden by opacity */
+    animation: vine-sway-slow 8s ease-in-out infinite, vine-fade 20s ease-in-out infinite;
+}
+
+@keyframes vine-sway-slow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+/*
+  Flow highlight overlay:
+  - JS creates a cloned path for each vine with class `vine-flow`.
+  - We keep main vine growth via `stroke-dasharray: 1000; stroke-dashoffset: ...`.
+  - The overlay adds a subtle “sap/flow” impression moving along the vine.
+*/
+.vine-flow {
+    fill: none;
+    stroke: rgba(157, 112, 92, 0.95); /* slightly lighter brown highlight */
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    opacity: calc(var(--vine-grow, 0) * 0.35);
+    will-change: stroke-dashoffset;
+}
+
+.vine-extra-2 {
+    animation-delay: -4s;
+}
+
+.vine-extra-3 {
+    animation-delay: -8s;
+}
+
+.vine-extra-4 {
+    animation-delay: -12s;
+}
+
+@keyframes vine-fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
+.container.fade-in, .container {
+    position: relative;
+    z-index: 10;
+}
+
+.bio-section {
+    position: relative;
+    z-index: 1;
+}
+
+.projects-section {
+    position: relative;
+    z-index: 1;
+}
+
+.work-experience-section {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card {
+    background-color: rgba(26, 42, 27, 0.9); /* Darker green, higher opacity for better contrast */
+    border: 1px solid #4b6345;
+    padding: 1.25rem;
+    margin-bottom: 1.875rem;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 11;
+    backdrop-filter: blur(5px); /* Optional: add blur to help text pop against vines */
+}
+
+.project-card h3 {
+    color: #d4e4bc;
+}
+
+.project-card .project-info {
+    color: #f0f0f0;
+}
+
+footer {
+    color: #d4e4bc;
+    border-top: 10px solid rgba(61, 43, 31, 0.5); /* "Soil" layer */
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* For the rotating core */
+}
+
+.footer-core-container {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30%; /* Controls how far up the gradient extends */
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 0;
+    pointer-events: none;
+}
+
+.earth-core {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #ff4500 0%, #ff8c00 50%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.4;
+    animation: core-rotate-pulse 6s ease-in-out infinite; /* Faster and smoother pulse */
+    position: relative;
+}
+
+@keyframes core-rotate-pulse {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1); 
+        opacity: 0.4; 
+        filter: blur(20px);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.15); 
+        opacity: 0.7; 
+        filter: blur(25px);
+    }
+}
+
+.speckle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 5px #fff;
+}
+
+@keyframes core-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+footer .social-icon {
+    filter: sepia(100%) hue-rotate(60deg) brightness(80%);
+}
+
+/* Hero plant (cannabis-like silhouette) */
+.cannabis-plant {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
+    /* Let the container do the positioning so the SVG stays truly centered. */
+    transform: translateX(0);
+}
+
+.cannabis-plant .stem {
+    fill: none;
+    stroke: #3f5b3a;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    animation: stem-draw 1.1s ease-out forwards;
+}
+
+.cannabis-plant .branch {
+    fill: none;
+    stroke: #3f5b3a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+    animation: branch-draw 0.9s 0.85s ease-out forwards;
+}
+
+.cannabis-plant .fan path {
+    fill: none;
+    stroke: #6d8a64;
+    stroke-width: 2.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cannabis-plant .fan {
+    /*
+      IMPORTANT: Use CSS transforms for BOTH positioning and animation.
+      If a CSS `transform` is present, it overrides any SVG `transform="..."` attribute.
+      So we keep the attach-point translation in CSS (SVG user units) via --tx/--ty.
+    */
+    --tx: 0px;
+    --ty: 0px;
+    --s: 1;
+    transform-origin: 0 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
 }
 
-.hero.bg-visible::before {
-    opacity: 1;
+.cannabis-plant .fan-1 { --tx: 50px; --ty: 78px; --s: 1.18; }
+.cannabis-plant .fan-2 { --tx: 50px; --ty: 60px; --s: 1.00; }
+.cannabis-plant .fan-3 { --tx: 50px; --ty: 42px; --s: 0.84; }
+.cannabis-plant .fan-4 { --tx: 32px; --ty: 58px; --s: 0.92; }
+.cannabis-plant .fan-5 { --tx: 68px; --ty: 56px; --s: 0.92; }
+
+.cannabis-plant .fan-1 {
+    animation: fan-unfurl 0.9s 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
-.hero.bg-visible::after {
-    opacity: 1;
+.cannabis-plant .fan-2 {
+    animation: fan-unfurl 0.9s 0.75s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
-.hero-transition-gradient{
-    background: #000000;
-    background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
+.cannabis-plant .fan-3 {
+    animation: fan-unfurl 0.9s 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.cannabis-plant .fan-4 {
+    animation: fan-unfurl 0.9s 0.80s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.cannabis-plant .fan-5 {
+    animation: fan-unfurl 0.9s 0.88s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.cannabis-plant .bud {
+    --tx: 50px;
+    --ty: 18px;
+    --s: 1;
+    --delay: 1.1s;
+    transform-origin: 0 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+    animation: bud-pop 0.7s var(--delay) ease-out forwards;
+}
+
+.cannabis-plant .bud-1 { --tx: 50px; --ty: 18px; --s: 1.12; --delay: 1.10s; }
+.cannabis-plant .bud-2 { --tx: 48px; --ty: 28px; --s: 1.02; --delay: 1.22s; }
+.cannabis-plant .bud-3 { --tx: 52px; --ty: 40px; --s: 0.96; --delay: 1.34s; }
+.cannabis-plant .bud-4 { --tx: 49px; --ty: 52px; --s: 0.90; --delay: 1.46s; }
+.cannabis-plant .bud-5 { --tx: 50px; --ty: 64px; --s: 0.86; --delay: 1.58s; }
+
+.cannabis-plant .bud-l1 { --tx: 26px; --ty: 28px; --s: 1.00; --delay: 1.18s; }
+.cannabis-plant .bud-l2 { --tx: 28px; --ty: 40px; --s: 0.94; --delay: 1.30s; }
+.cannabis-plant .bud-l3 { --tx: 32px; --ty: 52px; --s: 0.90; --delay: 1.42s; }
+
+.cannabis-plant .bud-r1 { --tx: 74px; --ty: 26px; --s: 1.00; --delay: 1.18s; }
+.cannabis-plant .bud-r2 { --tx: 72px; --ty: 38px; --s: 0.94; --delay: 1.30s; }
+.cannabis-plant .bud-r3 { --tx: 68px; --ty: 50px; --s: 0.90; --delay: 1.42s; }
+
+.cannabis-plant .pollen-dot {
+    --tx: 50px;
+    --ty: 30px;
+    --dx: 0px;
+    --delay: 2.6s;
+    fill: rgba(240, 255, 245, 0.9);
+    opacity: 0;
+    filter: blur(0.15px);
+    transform-origin: center;
+    transform: translate(var(--tx), var(--ty));
+    animation: pollen-float 2.9s var(--delay) ease-in-out infinite;
+}
+
+.cannabis-plant .pollen-dot.p1 { --tx: 50px; --ty: 18px; --dx: -3px; --delay: 2.55s; }
+.cannabis-plant .pollen-dot.p2 { --tx: 52px; --ty: 28px; --dx: 2px;  --delay: 2.62s; }
+.cannabis-plant .pollen-dot.p3 { --tx: 48px; --ty: 40px; --dx: -2px; --delay: 2.70s; }
+.cannabis-plant .pollen-dot.p4 { --tx: 50px; --ty: 58px; --dx: 3px;  --delay: 2.78s; }
+.cannabis-plant .pollen-dot.p5 { --tx: 26px; --ty: 32px; --dx: -4px; --delay: 2.64s; }
+.cannabis-plant .pollen-dot.p6 { --tx: 30px; --ty: 46px; --dx: 2px;  --delay: 2.74s; }
+.cannabis-plant .pollen-dot.p7 { --tx: 74px; --ty: 30px; --dx: 4px;  --delay: 2.66s; }
+.cannabis-plant .pollen-dot.p8 { --tx: 70px; --ty: 48px; --dx: -2px; --delay: 2.76s; }
+
+.cannabis-plant .bud-core {
+    fill: #a3c9a8;
+}
+
+.cannabis-plant .bud-nug {
+    fill: #d4e4bc;
+    opacity: 0.95;
+}
+
+.cannabis-plant .bud-core,
+.cannabis-plant .bud-nug {
+    transform-origin: center;
+    animation: none;
+}
+
+@keyframes stem-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes branch-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fan-unfurl {
+    0% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--s));
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes bud-pop {
+    0% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(var(--s)); opacity: 1; }
+}
+
+@keyframes pollen-float {
+    0% {
+        transform: translate(var(--tx), var(--ty)) translate(0, 0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.28;
+    }
+    70% {
+        transform: translate(var(--tx), var(--ty)) translate(var(--dx), -14px);
+        opacity: 0.18;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) translate(calc(var(--dx) * 1.3), -22px);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cannabis-plant .pollen-dot {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* Buds stay still once popped in (no pulsing movement). */
+
+.vine-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+.text-center.fade-in {
+    position: relative;
+    z-index: 10; /* Ensure text is above vines if they are z-index 2 */
 }
 
 h1 {
     font-size: 2.5rem; /* Equivalent to 40px */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to make text more visible */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Stronger shadow */
 }
 
 p.lead {
     font-size: 1.125rem; /* Equivalent to 18px */
     font-family: 'Ubuntu Mono', monospace;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to make text more visible */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Stronger shadow */
     color:white;
 }
 
@@ -247,8 +623,8 @@ p.lead {
 .section-after-hero {
     position: relative;
     margin-top: 0;
-    padding-top: 20rem !important; /* Increased from 8rem to move content much further down */
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    padding-top: 8rem !important;
+    background: transparent;
 }
 
 /* Fade-in effect for elements */
@@ -264,48 +640,6 @@ p.lead {
     transform: translateY(0);
 }
 
-/* Project Card Styling */
-.project-card {
-    background-color: #333;
-    padding: 1.25rem; /* 20px equivalent */
-    margin-bottom: 1.875rem; /* 30px equivalent */
-    border-radius: 0.5rem; /* 8px equivalent */
-}
-
-.project-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem; /* Space between image and text */
-}
-
-.project-image {
-    width: 250px; /* Fixed width */
-    height: 250px; /* Fixed height */
-    object-fit: cover; /* Ensure the image covers the space without distortion */
-    background-color: #333; /* Add a placeholder background color while the image loads */
-    border-radius: 8px;
-    flex: none;/* Optional rounded corners */
-}
-
-.project-card h3 {
-    font-size: 1.5rem; /* Equivalent to 24px */
-    margin-bottom: 0.625rem; /* 10px equivalent */
-    font-family: 'Rubik Mono One', sans-serif;
-}
-
-.project-card .subtitle {
-    font-size: 1.125rem; /* Equivalent to 18px */
-    margin-bottom: 0.3125rem; /* 5px equivalent */
-    font-family: 'Ubuntu Mono', monospace;
-}
-
-.project-card .project-info {
-    font-size: 1rem; /* Equivalent to 14px */
-    color: #ccc;
-    font-family: 'Ubuntu Mono', monospace;
-}
-
 /* Add extra padding to the last section for smoother scrolling */
 #work-experience-section {
     padding-bottom: 50vh; /* Extra space for smooth scrolling */
@@ -318,6 +652,10 @@ p.lead {
 
 /* Mobile Responsiveness for Full-Screen Menu */
 @media (max-width: 768px) {
+    /* Hide vines on small screens if they overlap too much */
+    .vines-svg {
+        display: none;
+    }
 
     /* Resize Hamburger Icon */
     .hamburger-btn {

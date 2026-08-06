@@ -54,7 +54,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="plant-theme">
+
+<!-- Vine Background -->
+<svg class="vines-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <path id="vine-left" class="vine-path" d="M 10 0 Q 15 25 10 50 Q 5 75 10 100" />
+  <path id="vine-right" class="vine-path" d="M 90 0 Q 85 25 90 50 Q 95 75 90 100" />
+</svg>
 
 <header>
   <!-- Navbar (Floating Icon and Hamburger Menu) -->
@@ -108,10 +114,28 @@
 
 <main>
 <!-- Hero Section -->
-<section id="hero" class="hero d-flex align-items-center justify-content-center">
+<section id="hero" class="hero">
+  <div id="plant-container">
+    <svg viewBox="0 0 100 100" class="blooming-plant">
+      <!-- Stem -->
+      <path d="M 50 100 Q 50 70 50 40" stroke="#4b6345" stroke-width="4" fill="none" />
+      <!-- Left Leaf -->
+      <path class="leaf" d="M 50 80 Q 30 70 20 80 Q 30 90 50 80" fill="#6d8a64" />
+      <!-- Right Leaf -->
+      <path class="leaf" d="M 50 70 Q 70 60 80 70 Q 70 80 50 70" fill="#6d8a64" />
+      <!-- Flower/Bud -->
+      <circle class="flower-center" cx="50" cy="40" r="8" fill="#a3c9a8" />
+      <g class="petals">
+        <circle cx="50" cy="30" r="6" fill="#d4e4bc" />
+        <circle cx="50" cy="50" r="6" fill="#d4e4bc" />
+        <circle cx="40" cy="40" r="6" fill="#d4e4bc" />
+        <circle cx="60" cy="40" r="6" fill="#d4e4bc" />
+      </g>
+    </svg>
+  </div>
   <div class="text-center fade-in" style="position: relative; z-index: 1;">
     <h1>Jaxon Dupre`</h1>
-    <p class="lead">Dev by day <br>Mushroomancer by night</p>
+    <p class="lead">Dev by day <br>Plantomancer by night</p>
   </div>
 </section>
 
@@ -244,7 +268,7 @@
 
 <footer class="mt-5 py-4 text-center">
   <div class="container">
-    <p>© <span id="current-year">2023</span> Jaxon Dupre. All rights reserved.</p>
+    <p>© <span id="current-year"></span> Jaxon Dupre. All rights reserved.</p>
     <div class="social-icons justify-content-center">
       <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
         <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">

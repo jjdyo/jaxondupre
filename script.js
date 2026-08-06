@@ -89,12 +89,23 @@ document.querySelector('.floating-icon').addEventListener('click', function(e) {
 
 // Show Floating Icon and Hamburger Menu on Scroll
 const floatingElements = document.getElementById('floating-elements');
+const vineLeft = document.getElementById('vine-left');
+const vineRight = document.getElementById('vine-right');
+
 window.addEventListener('scroll', function() {
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+    
+    // Update floating elements visibility
     if (window.scrollY > 100) {
         floatingElements.classList.remove('hidden');
     } else {
         floatingElements.classList.add('hidden');
     }
+
+    // Update vine growth
+    const drawOffset = 1000 - (scrollPercent * 1000);
+    if (vineLeft) vineLeft.style.strokeDashoffset = drawOffset;
+    if (vineRight) vineRight.style.strokeDashoffset = drawOffset;
 });
 
 // Fade-in effect for elements
@@ -119,14 +130,14 @@ fadeInElements.forEach(element => {
 // Title Animation Function
 function startTitleAnimation() {
     const frames = [
-        '🧙🪄✨',
-        '🧙🪄 ⚡',
-        '🧙🪄 ⚡⚡',
-        '🧙🪄 ⚡⚡⚡',
-        '🧙🪄',
-        '🧙🪄 ⚡⚡⚡',
-        '🧙🪄',
-        '🧙🪄 ⚡⚡⚡',
+        '🌱',
+        '🌿',
+        '🌳',
+        '🍃',
+        '🍀',
+        '🎋',
+        '🍃',
+        '🌿',
     ];
 
     let currentFrame = 0;

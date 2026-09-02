@@ -182,14 +182,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .cannabis-plant .bud-main { --tx: 50px; --ty: 10px;  --s: 1.18; --delay: 1.15s; }
 
-.cannabis-plant .bud-l1   { --tx: 16px; --ty: 64px;  --s: 1.00; --delay: 1.25s; }
-.cannabis-plant .bud-r1   { --tx: 84px; --ty: 64px;  --s: 1.00; --delay: 1.25s; }
+/* Lower pair – pulled well inward */
+.cannabis-plant .bud-l1   { --tx: 24px; --ty: 66px;  --s: 1.00; --delay: 1.25s; }
+.cannabis-plant .bud-r1   { --tx: 77px; --ty: 63px;  --s: 0.97; --delay: 1.28s; } /* slightly higher + smaller */
 
-.cannabis-plant .bud-l2   { --tx: 22px; --ty: 44px;  --s: 0.92; --delay: 1.38s; }
-.cannabis-plant .bud-r2   { --tx: 78px; --ty: 44px;  --s: 0.92; --delay: 1.38s; }
+/* Mid pair */
+.cannabis-plant .bud-l2   { --tx: 28px; --ty: 46px;  --s: 0.92; --delay: 1.38s; }
+.cannabis-plant .bud-r2   { --tx: 73px; --ty: 43px;  --s: 0.90; --delay: 1.41s; } /* higher + slightly smaller */
 
-.cannabis-plant .bud-l3   { --tx: 29px; --ty: 28px;  --s: 0.84; --delay: 1.50s; }
-.cannabis-plant .bud-r3   { --tx: 71px; --ty: 28px;  --s: 0.84; --delay: 1.50s; }
+/* Upper pair – tightest */
+.cannabis-plant .bud-l3   { --tx: 33px; --ty: 29px;  --s: 0.84; --delay: 1.50s; }
+.cannabis-plant .bud-r3   { --tx: 68px; --ty: 31px;  --s: 0.82; --delay: 1.53s; } /* slightly lower */
 
 .cannabis-plant .bud-core {
     fill: #a3c9a8;

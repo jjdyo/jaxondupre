@@ -1,450 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaxon Dupre | Static Portfolio</title>
-  <meta name="description" content="Jaxon Dupre - Fullstack web developer, homelab enthusiast, and mycology researcher. Code, infrastructure, and more.">
-  <meta property="og:title" content="Jaxon Dupre | Static Portfolio">
-  <meta property="og:description" content="Fullstack web developer, homelab enthusiast, and mycology researcher. Code, infrastructure, and more.">
-  <meta property="og:image" content="https://jaxonville.com/files/jdwob_150x150.png">
-  <meta property="og:url" content="https://jaxonville.com">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://jaxonville.com">
-  <link rel="icon" type="image/png" href="/files/jdwob_150x150.png" sizes="150x150">
-  <!-- Need to resize icon for these
-  <link rel="apple-touch-icon" sizes="180x180" href="/files/jdwob_150x150.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/files/jdwob_150x150.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/files/jdwob_150x150.png">
-  -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Jaxon Dupre",
-      "alternateName": ["Jaxon", "jaxonville.com", "Jaxon Dupre Portfolio"],
-      "url": "https://jaxonville.com/"
-    }
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Jaxon Dupre",
-      "url": "https://jaxonville.com",
-      "sameAs": [
-        "https://www.linkedin.com/in/jaxondupre/",
-        "https://github.com/jjdyo",
-        "https://jaxonvillemushrooms.com/"
-      ],
-      "jobTitle": "Software Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Jaxonville"
-      },
-      "description": "Fullstack web developer, homelab enthusiast, and mycology researcher."
-    }
-  </script>
-  <link rel="stylesheet" href="/bootstrap-4.5.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaxon Dupre | Static Portfolio</title>
+    <meta name="description" content="Jaxon Dupre - Fullstack web developer, homelab enthusiast, and mycology researcher. Code, infrastructure, and more.">
+    <meta property="og:title" content="Jaxon Dupre | Static Portfolio">
+    <meta property="og:description" content="Fullstack web developer, homelab enthusiast, and mycology researcher. Code, infrastructure, and more.">
+    <meta property="og:image" content="https://jaxonville.com/files/jdwob_150x150.png">
+    <meta property="og:url" content="https://jaxonville.com">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://jaxonville.com">
+    <link rel="icon" type="image/png" href="/files/jdwob_150x150.png" sizes="150x150">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Jaxon Dupre",
+            "alternateName": ["Jaxon", "jaxonville.com", "Jaxon Dupre Portfolio"],
+            "url": "https://jaxonville.com/"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Jaxon Dupre",
+            "url": "https://jaxonville.com",
+            "sameAs": [
+                "https://www.linkedin.com/in/jaxondupre/",
+                "https://github.com/jjdyo",
+                "https://jaxonvillemushrooms.com/"
+            ],
+            "jobTitle": "Software Developer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Jaxonville"
+            },
+            "description": "Fullstack web developer, homelab enthusiast, and mycology researcher."
+        }
+    </script>
+    <link rel="stylesheet" href="/bootstrap-4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
 
-  <!-- Google Fonts (Rubik Mono One and Ubuntu Mono) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body class="plant-theme">
 
 <!-- Vine Background -->
 <svg class="vines-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-  <path id="vine-left" class="vine-path vine-side vine-animate" d="M 10 0 Q 15 25 10 50 Q 5 75 10 100" />
-  <path id="vine-right" class="vine-path vine-side vine-animate" d="M 90 0 Q 85 25 90 50 Q 95 75 90 100" />
-
-  <!-- Additional side vines for volume (kept near edges only) -->
-  <path class="vine-path vine-side vine-animate" d="M 12 0 Q 17 30 12 60 Q 7 85 12 100" style="opacity: 0.4; stroke-width: 2;" />
-  <path class="vine-path vine-side vine-animate" d="M 88 0 Q 83 20 88 50 Q 93 80 88 100" style="opacity: 0.4; stroke-width: 2;" />
+    <path id="vine-left" class="vine-path vine-side vine-animate" d="M 10 0 Q 15 25 10 50 Q 5 75 10 100" />
+    <path id="vine-right" class="vine-path vine-side vine-animate" d="M 90 0 Q 85 25 90 50 Q 95 75 90 100" />
+    <path class="vine-path vine-side vine-animate" d="M 12 0 Q 17 30 12 60 Q 7 85 12 100" style="opacity: 0.4; stroke-width: 2;" />
+    <path class="vine-path vine-side vine-animate" d="M 88 0 Q 83 20 88 50 Q 93 80 88 100" style="opacity: 0.4; stroke-width: 2;" />
 </svg>
 
 <header>
-  <!-- Navbar (Floating Icon and Hamburger Menu) -->
-  <div id="floating-elements" class="floating-elements">
-    <a href="#hero" class="floating-icon scroll-link">
-      <img src="files/jdwob_150x150.png" alt="Jaxon Dupre Logo" class="icon-image" fetchpriority="high" decoding="async">
-    </a>
-    <button id="hamburger-toggle" class="hamburger-btn" aria-label="Toggle navigation menu">
-      <div></div>
-      <div></div>
-      <div></div>
-    </button>
-  </div>
-
-  <!-- Expanded Menu (Fading in from the left) -->
-  <nav id="expanded-menu" class="expanded-menu" aria-label="Main navigation">
-    <div class="menu-container">
-      <!-- Section Links and Menu Content -->
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
-          <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+    <div id="floating-elements" class="floating-elements">
+        <a href="#hero" class="floating-icon scroll-link">
+            <img src="files/jdwob_150x150.png" alt="Jaxon Dupre Logo" class="icon-image" fetchpriority="high" decoding="async">
         </a>
-        <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
-          <img src="files/github.svg" alt="GitHub" class="social-icon">
-        </a>
-      </div>
-
-      <ul class="menu-content">
-        <li>
-          <a href="#bio-section" class="scroll-link menu-item">
-            <h2>About Me</h2>
-            <p class="menu-description">Learn about my background, passions, and professional journey.</p>
-          </a>
-        </li>
-        <li>
-          <a href="#projects-section" class="scroll-link menu-item">
-            <h2>Projects</h2>
-            <p class="menu-description">Explore my most recent projects, technologies, and challenges solved.</p>
-          </a>
-        </li>
-        <li>
-          <a href="#work-experience-section" class="scroll-link menu-item">
-            <h2>Work Experience</h2>
-            <p class="menu-description">A deep dive into my work history and the roles I've held.</p>
-          </a>
-        </li>
-      </ul>
+        <button id="hamburger-toggle" class="hamburger-btn" aria-label="Toggle navigation menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
     </div>
-  </nav>
+
+    <nav id="expanded-menu" class="expanded-menu" aria-label="Main navigation">
+        <div class="menu-container">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
+                    <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
+                    <img src="files/github.svg" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+
+            <ul class="menu-content">
+                <li>
+                    <a href="#bio-section" class="scroll-link menu-item">
+                        <h2>About Me</h2>
+                        <p class="menu-description">Learn about my background, passions, and professional journey.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects-section" class="scroll-link menu-item">
+                        <h2>Projects</h2>
+                        <p class="menu-description">Explore my most recent projects, technologies, and challenges solved.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#work-experience-section" class="scroll-link menu-item">
+                        <h2>Work Experience</h2>
+                        <p class="menu-description">A deep dive into my work history and the roles I've held.</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>
 
 <main>
-<!-- Hero Section -->
-<section id="hero" class="hero">
-  <div id="plant-container">
-    <svg viewBox="0 0 100 120" class="cannabis-plant" aria-hidden="true" focusable="false">
-      <!-- Stem (draws upward) -->
-      <path class="stem" d="M 50 118 C 50 95, 49 80, 50 62 C 51 45, 52 34, 50 18" />
+    <section id="hero" class="hero">
+        <div id="plant-container">
+            <svg viewBox="0 0 100 130" class="cannabis-plant" aria-hidden="true" focusable="false">
+                <!-- Main stem -->
+                <path class="stem" d="M 50 125 C 50 105, 50 85, 50 65 C 50 45, 50 28, 50 12" />
 
-      <!-- Topped branches / side colas (wider) -->
-      <path class="branch branch-left" d="M 50 66 C 42 60, 34 54, 28 46 C 22 38, 20 31, 23 24" />
-      <path class="branch branch-right" d="M 50 64 C 58 58, 66 52, 72 44 C 78 36, 80 29, 77 22" />
+                <!-- Branches -->
+                <path class="branch branch-l1" d="M 50 96 C 39 91, 28 82, 18 68" />
+                <path class="branch branch-r1" d="M 50 96 C 61 91, 72 82, 82 68" />
+                <path class="branch branch-l2" d="M 50 73 C 42 68, 32 59, 24 47" />
+                <path class="branch branch-r2" d="M 50 73 C 58 68, 68 59, 76 47" />
+                <path class="branch branch-l3" d="M 50 51 C 45 47, 37 40, 31 31" />
+                <path class="branch branch-r3" d="M 50 51 C 55 47, 63 40, 69 31" />
+                <path class="branch branch-top" d="M 50 31 C 50 24, 50 18, 50 12" />
 
-      <!-- Fan leaves (unfurl in sequence) -->
-      <g class="fan fan-1">
-        <path d="M 0 0 C -8 -2, -16 -8, -22 -18 C -18 -17, -10 -12, 0 -7" />
-        <path d="M 0 0 C -12 -3, -24 -12, -30 -26 C -24 -23, -14 -16, 0 -9" />
-        <path d="M 0 0 C -2 -10, -2 -22, 0 -32 C 2 -22, 2 -10, 0 0" />
-        <path d="M 0 0 C 12 -3, 24 -12, 30 -26 C 24 -23, 14 -16, 0 -9" />
-        <path d="M 0 0 C 8 -2, 16 -8, 22 -18 C 18 -17, 10 -12, 0 -7" />
-      </g>
+                <!-- 5-finger fan leaves (smaller + varied) -->
+                <g class="fan fan-1">
+                    <!-- center finger -->
+                    <path d="M 0 0 C -1.5 -14, -1.5 -28, 0 -38 C 1.5 -28, 1.5 -14, 0 0"/>
+                    <!-- left fingers -->
+                    <path d="M 0 0 C -6 -6, -14 -16, -20 -28 C -14 -24, -7 -14, 0 -6"/>
+                    <path d="M 0 0 C -11 -4, -22 -12, -28 -24 C -20 -20, -11 -11, 0 -5"/>
+                    <!-- right fingers -->
+                    <path d="M 0 0 C 6 -6, 14 -16, 20 -28 C 14 -24, 7 -14, 0 -6"/>
+                    <path d="M 0 0 C 11 -4, 22 -12, 28 -24 C 20 -20, 11 -11, 0 -5"/>
+                </g>
 
-      <g class="fan fan-2">
-        <path d="M 0 0 C -10 -2, -20 -9, -28 -20 C -22 -19, -12 -13, 0 -8" />
-        <path d="M 0 0 C -15 -3, -30 -14, -38 -30 C -30 -27, -18 -18, 0 -10" />
-        <path d="M 0 0 C -2 -12, -2 -26, 0 -38 C 2 -26, 2 -12, 0 0" />
-        <path d="M 0 0 C 15 -3, 30 -14, 38 -30 C 30 -27, 18 -18, 0 -10" />
-        <path d="M 0 0 C 10 -2, 20 -9, 28 -20 C 22 -19, 12 -13, 0 -8" />
-      </g>
+                <g class="fan fan-2">
+                    <path d="M 0 0 C -1.3 -12, -1.3 -24, 0 -33 C 1.3 -24, 1.3 -12, 0 0"/>
+                    <path d="M 0 0 C -5.5 -5, -13 -14, -18 -25 C -13 -21, -6 -12, 0 -5"/>
+                    <path d="M 0 0 C -10 -3.5, -20 -11, -25 -22 C -18 -18, -10 -10, 0 -4.5"/>
+                    <path d="M 0 0 C 5.5 -5, 13 -14, 18 -25 C 13 -21, 6 -12, 0 -5"/>
+                    <path d="M 0 0 C 10 -3.5, 20 -11, 25 -22 C 18 -18, 10 -10, 0 -4.5"/>
+                </g>
 
-      <g class="fan fan-3">
-        <path d="M 0 0 C -9 -2, -18 -8, -26 -18 C -20 -17, -11 -12, 0 -8" />
-        <path d="M 0 0 C -14 -3, -28 -13, -36 -28 C -28 -25, -17 -17, 0 -10" />
-        <path d="M 0 0 C -2 -11, -2 -24, 0 -36 C 2 -24, 2 -11, 0 0" />
-        <path d="M 0 0 C 14 -3, 28 -13, 36 -28 C 28 -25, 17 -17, 0 -10" />
-        <path d="M 0 0 C 9 -2, 18 -8, 26 -18 C 20 -17, 11 -12, 0 -8" />
-      </g>
+                <g class="fan fan-3">
+                    <path d="M 0 0 C -1.1 -10, -1.1 -20, 0 -28 C 1.1 -20, 1.1 -10, 0 0"/>
+                    <path d="M 0 0 C -4.8 -4, -11 -12, -16 -22 C -11 -18, -5.5 -10, 0 -4.5"/>
+                    <path d="M 0 0 C -9 -3, -17 -9, -22 -19 C -16 -15, -9 -9, 0 -4"/>
+                    <path d="M 0 0 C 4.8 -4, 11 -12, 16 -22 C 11 -18, 5.5 -10, 0 -4.5"/>
+                    <path d="M 0 0 C 9 -3, 17 -9, 22 -19 C 16 -15, 9 -9, 0 -4"/>
+                </g>
 
-      <g class="fan fan-4">
-        <path d="M 0 0 C -10 -2, -20 -9, -28 -20 C -22 -19, -12 -13, 0 -8" />
-        <path d="M 0 0 C -15 -3, -30 -14, -38 -30 C -30 -27, -18 -18, 0 -10" />
-        <path d="M 0 0 C -2 -12, -2 -26, 0 -38 C 2 -26, 2 -12, 0 0" />
-        <path d="M 0 0 C 15 -3, 30 -14, 38 -30 C 30 -27, 18 -18, 0 -10" />
-        <path d="M 0 0 C 10 -2, 20 -9, 28 -20 C 22 -19, 12 -13, 0 -8" />
-      </g>
+                <!-- Buds -->
+                <g class="bud bud-main">
+                    <circle class="bud-core" cx="0" cy="0" r="5.8"/>
+                    <circle class="bud-nug" cx="-6.2" cy="3.2" r="3.5"/>
+                    <circle class="bud-nug" cx="6.2" cy="3.2" r="3.5"/>
+                    <circle class="bud-nug" cx="0" cy="7.5" r="3.2"/>
+                    <circle class="bud-nug" cx="-3.8" cy="-4.8" r="2.8"/>
+                    <circle class="bud-nug" cx="3.8" cy="-4.8" r="2.8"/>
+                </g>
 
-      <g class="fan fan-5">
-        <path d="M 0 0 C -8 -2, -16 -8, -22 -18 C -18 -17, -10 -12, 0 -7" />
-        <path d="M 0 0 C -12 -3, -24 -12, -30 -26 C -24 -23, -14 -16, 0 -9" />
-        <path d="M 0 0 C -2 -10, -2 -22, 0 -32 C 2 -22, 2 -10, 0 0" />
-        <path d="M 0 0 C 12 -3, 24 -12, 30 -26 C 24 -23, 14 -16, 0 -9" />
-        <path d="M 0 0 C 8 -2, 16 -8, 22 -18 C 18 -17, 10 -12, 0 -7" />
-      </g>
+                <g class="bud bud-l1">
+                    <circle class="bud-core" cx="0" cy="0" r="5"/>
+                    <circle class="bud-nug" cx="-5.6" cy="3" r="3.1"/>
+                    <circle class="bud-nug" cx="5.6" cy="3" r="3.1"/>
+                    <circle class="bud-nug" cx="0" cy="6.8" r="2.9"/>
+                    <circle class="bud-nug" cx="-3.2" cy="-4.2" r="2.5"/>
+                    <circle class="bud-nug" cx="3.2" cy="-4.2" r="2.5"/>
+                </g>
+                <g class="bud bud-r1">
+                    <circle class="bud-core" cx="0" cy="0" r="4.9"/>
+                    <circle class="bud-nug" cx="-5.4" cy="2.9" r="3"/>
+                    <circle class="bud-nug" cx="5.5" cy="3.1" r="3.1"/>
+                    <circle class="bud-nug" cx="0.3" cy="6.6" r="2.8"/>
+                    <circle class="bud-nug" cx="-3.1" cy="-4" r="2.4"/>
+                    <circle class="bud-nug" cx="3.4" cy="-4.3" r="2.5"/>
+                </g>
 
-      <!-- Buds (puff up along the cola) -->
-      <g class="bud bud-1">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
+                <g class="bud bud-l2">
+                    <circle class="bud-core" cx="0" cy="0" r="4.5"/>
+                    <circle class="bud-nug" cx="-5.1" cy="2.8" r="2.8"/>
+                    <circle class="bud-nug" cx="5.1" cy="2.8" r="2.8"/>
+                    <circle class="bud-nug" cx="0" cy="6.2" r="2.6"/>
+                    <circle class="bud-nug" cx="-2.9" cy="-3.9" r="2.3"/>
+                    <circle class="bud-nug" cx="2.9" cy="-3.9" r="2.3"/>
+                </g>
+                <g class="bud bud-r2">
+                    <circle class="bud-core" cx="0" cy="0" r="4.4"/>
+                    <circle class="bud-nug" cx="-5" cy="2.6" r="2.7"/>
+                    <circle class="bud-nug" cx="5.2" cy="2.9" r="2.8"/>
+                    <circle class="bud-nug" cx="0.2" cy="6" r="2.5"/>
+                    <circle class="bud-nug" cx="-2.7" cy="-3.7" r="2.2"/>
+                    <circle class="bud-nug" cx="3.1" cy="-4" r="2.3"/>
+                </g>
 
-      <g class="bud bud-2">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-3">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-4">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-5">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <!-- Side colas buds -->
-      <g class="bud bud-l1">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-l2">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-l3">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-r1">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-r2">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <g class="bud bud-r3">
-        <circle class="bud-core" cx="0" cy="0" r="5" />
-        <circle class="bud-nug" cx="-6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="6" cy="4" r="3.5" />
-        <circle class="bud-nug" cx="0" cy="8" r="3.2" />
-        <circle class="bud-nug" cx="-3" cy="-5" r="2.8" />
-        <circle class="bud-nug" cx="3" cy="-5" r="2.8" />
-      </g>
-
-      <!-- Subtle pollen/sparkles after buds fill in -->
-      <g class="pollen">
-        <circle class="pollen-dot p1" cx="0" cy="0" r="0.7" />
-        <circle class="pollen-dot p2" cx="0" cy="0" r="0.6" />
-        <circle class="pollen-dot p3" cx="0" cy="0" r="0.65" />
-        <circle class="pollen-dot p4" cx="0" cy="0" r="0.55" />
-        <circle class="pollen-dot p5" cx="0" cy="0" r="0.7" />
-        <circle class="pollen-dot p6" cx="0" cy="0" r="0.6" />
-        <circle class="pollen-dot p7" cx="0" cy="0" r="0.65" />
-        <circle class="pollen-dot p8" cx="0" cy="0" r="0.55" />
-      </g>
-    </svg>
-  </div>
-  <div class="text-center fade-in" style="position: relative; z-index: 1;">
-    <h1>Jaxon Dupre`</h1>
-    <p class="lead">Dev by day <br>Plantomancer by night</p>
-  </div>
-</section>
-
-<!-- Bio Section with gradient transition -->
-<section id="bio-section" class="bio-section text-center py-5 section-after-hero">
-  <div class="container fade-in">
-    <h2>About Me</h2>
-    <p class="bio-text">
-      Hi, I'm Jaxon — a Software Developer with a strong foundation in fullstack development, system architecture, and
-      automation. I specialize in <a href="https://www.linkedin.com/in/jaxondupre/overlay/1753901432123/single-media-viewer/?profileId=ACoAADK47J4BwrtlBq38O3jOI_SSKLfJUl8b45k" target="_blank">Drupal, Laravel, PHP, HTML/CSS/JS, and more</a>. If I don't understand something, I will
-      make sure I do soon.<br><br>
-
-      Beyond traditional web development, I manage a variety of self-hosted services in my homelab, including <a href="https://status.jaxonville.com/status/homelab" target="_blank">Uptime
-      Kuma,</a> Trilium, VPNs, and pfSense virtualization. I design secure network architectures using Cloudflare proxies
-      and implement real-time monitoring with Grafana and InfluxDB.<br><br>
-
-      Outside of software, my interests extend into <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank">
-      3D printing, basic electrical engineering, and mechanical/automotive
-      engineering</a>. I take pride in maintaining a diverse skill set—allowing me to build the things I need while continuously
-      expanding my knowledge to do more.<br><br>
-
-      I'm also the creator of <a href="https://jaxonvillemushrooms.com/" target="_blank">JaxonvilleMushrooms</a>, a WordPress-powered educational site where I share my work in mycology,
-      e-commerce, and content development.<br><br>
-
-      🚀 Always learning, always building.
-    </p>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects-section" class="projects-section py-5 section-with-margin">
-  <div class="container">
-    <h2 class="text-center">Projects</h2>
-
-    <article class="project-card">
-      <div class="project-content">
-        <img src="files/jdbow_250x250.png" alt="Jaxon Dupre Portfolio Logo" class="project-image">
-        <div>
-          <h3>JaxonDupre - Portfolio <a href="https://github.com/jjdyo/jaxondupre" target="_blank" aria-label="GitHub repository for Jaxon Dupre Portfolio">
-            <img src="files/github.svg" alt="GitHub" class="social-icon">
-          </a>
-          </h3>
-          <h4 class="subtitle">An accessible static website built in Vanilla HTML/CSS/JS</h4>
-          <p class="project-info">
-            The business card for the tech world: This site is more than just a showcase—it's an open
-            invitation to connect, collaborate, and create something meaningful. Here, you'll find a blend of my professional
-            work and the personality that drives it. Life isn't as black and white as this website's palette, but together,
-            we can leave behind a legacy of colorful, impactful work and inspire those around us to do the same.
-          </p>
+                <g class="bud bud-l3">
+                    <circle class="bud-core" cx="0" cy="0" r="4.1"/>
+                    <circle class="bud-nug" cx="-4.6" cy="2.5" r="2.5"/>
+                    <circle class="bud-nug" cx="4.6" cy="2.5" r="2.5"/>
+                    <circle class="bud-nug" cx="0" cy="5.6" r="2.4"/>
+                    <circle class="bud-nug" cx="-2.6" cy="-3.5" r="2.1"/>
+                    <circle class="bud-nug" cx="2.6" cy="-3.5" r="2.1"/>
+                </g>
+                <g class="bud bud-r3">
+                    <circle class="bud-core" cx="0" cy="0" r="4"/>
+                    <circle class="bud-nug" cx="-4.4" cy="2.4" r="2.4"/>
+                    <circle class="bud-nug" cx="4.5" cy="2.6" r="2.5"/>
+                    <circle class="bud-nug" cx="0.1" cy="5.4" r="2.3"/>
+                    <circle class="bud-nug" cx="-2.5" cy="-3.3" r="2"/>
+                    <circle class="bud-nug" cx="2.7" cy="-3.6" r="2.1"/>
+                </g>
+            </svg>
         </div>
-      </div>
-    </article>
 
-    <article class="project-card">
-      <div class="project-content">
-        <img src="files/jaxonvillemushrooms_250x250.png" alt="JaxonvilleMushrooms logo depicting a cluster of wandering creamsicle mushrooms" class="project-image">
-        <div>
-          <h3>JaxonvilleMushrooms <a href="https://jaxonvillemushrooms.com" target="_blank" aria-label="JaxonvilleMushrooms website">
-            <img src="files/webbow.png" alt="Website link" class="social-icon">
-          </a>
-          </h3>
-          <h4 class="subtitle">Mushroom gear, blogs, education, and more from Jaxon in Jacksonville.</h4>
-          <p class="project-info">
-            JaxonvilleMushrooms is a website/project of mine built using WPEngine.
-            I am an avid mycologist (someone who works with fungi) and do great amounts
-            of research and cultivation in my free time; Growing a handful of delicious
-            species like Lions mane and pioppino. Mushrooms have been around as long as time,
-            and most of the websites that provide much-needed information to get started in the
-            hobby seem to be made from around the same era! More often than not, they are confusing,
-            outdated, and not properly maintained. Additionally, it's incredibly easy to get lost in the
-            scope of the entire hobby and the hundreds of things you can do, but
-            probably shouldn't do. My objective with this website is to give back to the
-            community through resources and information presented in a way that makes sense to someone just starting out.
-          </p>
+        <div class="text-center fade-in" style="position: relative; z-index: 1;">
+            <h1>Jaxon Dupre`</h1>
+            <p class="lead">Phytokinesis by day <br>Mycology by night</p>
         </div>
-      </div>
-    </article>
+    </section>
 
-    <article class="project-card">
-      <div class="project-content">
-        <img src="files/vogtle_homelab.png" alt="Homelab setup showing server rack with Proxmox and pfSense" class="project-image">
-        <div>
-          <h3>Homelab — Virtualization of all types. <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank" aria-label="LinkedIn projects page">
-            <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
-          </a>
-          </h3>
-          <h4 class="subtitle">Proxmox, pfSense, and self-hosted services.</h4>
-          <p class="project-info">
-            This is the heart of my self-hosted infrastructure—a homelab built to explore,
-            automate, and protect. Powered by Proxmox for virtualization and pfSense for
-            firewalling, DMZ, and VLAN segmentation, this project demonstrates, in part, my experience
-            with recreating enterprise-level infrastructure
-            networking in a home environment. I’ve set up a dedicated NAT/DMZ layer to
-            keep internal services secure and isolated, with web apps safely exposed
-            through Cloudflare reverse proxies.<br><br>
+    <!-- Bio Section -->
+    <section id="bio-section" class="bio-section text-center py-5 section-after-hero">
+        <div class="container fade-in">
+            <h2>About Me</h2>
+            <p class="bio-text">
+                Hi, I'm Jaxon — a Software Developer with a strong foundation in fullstack development, system architecture, and
+                automation. I specialize in <a href="https://www.linkedin.com/in/jaxondupre/overlay/1753901432123/single-media-viewer/?profileId=ACoAADK47J4BwrtlBq38O3jOI_SSKLfJUl8b45k" target="_blank">Drupal, Laravel, PHP, HTML/CSS/JS, and more</a>. If I don't understand something, I will
+                make sure I do soon.<br><br>
 
-            To keep things visible and accountable,
-            I've built a real-time status page using Uptime Kuma, Grafana, and InfluxDB
-            offering live service health metrics at a glance. From automatic backups
-            to smart routing, this lab represents my ongoing investment in learning
-            infrastructure, solving real problems with scalable, automatable, and secure solutions.
-          </p>
+                Beyond traditional web development, I manage a variety of self-hosted services in my homelab, including <a href="https://status.jaxonville.com/status/homelab" target="_blank">Uptime
+                Kuma,</a> Trilium, VPNs, and pfSense virtualization. I design secure network architectures using Cloudflare proxies
+                and implement real-time monitoring with Grafana and InfluxDB.<br><br>
+
+                Outside of software, my interests extend into <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank">
+                3D printing, basic electrical engineering, and mechanical/automotive
+                engineering</a>. I take pride in maintaining a diverse skill set—allowing me to build the things I need while continuously
+                expanding my knowledge to do more.<br><br>
+
+                I'm also the creator of <a href="https://jaxonvillemushrooms.com/" target="_blank">JaxonvilleMushrooms</a>, a WordPress-powered educational site where I share my work in mycology,
+                e-commerce, and content development.<br><br>
+
+                🚀 Always learning, always building.
+            </p>
         </div>
-      </div>
-    </article>
+    </section>
 
-  </div>
-</section>
+    <!-- Projects Section -->
+    <section id="projects-section" class="projects-section py-5 section-with-margin">
+        <div class="container">
+            <h2 class="text-center">Projects</h2>
 
+            <article class="project-card">
+                <div class="project-content">
+                    <img src="files/jdbow_250x250.png" alt="Jaxon Dupre Portfolio Logo" class="project-image">
+                    <div>
+                        <h3>JaxonDupre - Portfolio <a href="https://github.com/jjdyo/jaxondupre" target="_blank" aria-label="GitHub repository for Jaxon Dupre Portfolio">
+                            <img src="files/github.svg" alt="GitHub" class="social-icon">
+                        </a>
+                        </h3>
+                        <h4 class="subtitle">An accessible static website built in Vanilla HTML/CSS/JS</h4>
+                        <p class="project-info">
+                            The business card for the tech world: This site is more than just a showcase—it's an open
+                            invitation to connect, collaborate, and create something meaningful. Here, you'll find a blend of my professional
+                            work and the personality that drives it. Life isn't as black and white as this website's palette, but together,
+                            we can leave behind a legacy of colorful, impactful work and inspire those around us to do the same.
+                        </p>
+                    </div>
+                </div>
+            </article>
 
-<!-- Work Experience Section -->
-<section id="work-experience-section" class="work-experience-section text-center py-5 section-with-margin">
-  <div class="container">
-    <h2>Work Experience</h2>
-    <p>
-      I’ve had the opportunity to work on projects that span web development, infrastructure, and
-      automation—supporting over 400 clients across a range of technical challenges. From building
-      websites and streamlining backend systems to deploying full-stack features and managing security configurations,
-      my focus has always been on creating practical, scalable solutions that just work.<br><br>
+            <article class="project-card">
+                <div class="project-content">
+                    <img src="files/jaxonvillemushrooms_250x250.png" alt="JaxonvilleMushrooms logo depicting a cluster of wandering creamsicle mushrooms" class="project-image">
+                    <div>
+                        <h3>JaxonvilleMushrooms <a href="https://jaxonvillemushrooms.com" target="_blank" aria-label="JaxonvilleMushrooms website">
+                            <img src="files/webbow.png" alt="Website link" class="social-icon">
+                        </a>
+                        </h3>
+                        <h4 class="subtitle">Mushroom gear, blogs, education, and more from Jaxon in Jacksonville.</h4>
+                        <p class="project-info">
+                            JaxonvilleMushrooms is a website/project of mine built using WPEngine.
+                            I am an avid mycologist (someone who works with fungi) and do great amounts
+                            of research and cultivation in my free time; Growing a handful of delicious
+                            species like Lions mane and pioppino. Mushrooms have been around as long as time,
+                            and most of the websites that provide much-needed information to get started in the
+                            hobby seem to be made from around the same era! More often than not, they are confusing,
+                            outdated, and not properly maintained. Additionally, it's incredibly easy to get lost in the
+                            scope of the entire hobby and the hundreds of things you can do, but
+                            probably shouldn't do. My objective with this website is to give back to the
+                            community through resources and information presented in a way that makes sense to someone just starting out.
+                        </p>
+                    </div>
+                </div>
+            </article>
 
-      For a detailed breakdown of my experience, including specific roles,
-      technologies used, and accomplishments, please feel free to connect
-      with me on <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank">LinkedIn</a> or reach out directly.
-      I'd love to share more.
-    </p>
-  </div>
-</section>
+            <article class="project-card">
+                <div class="project-content">
+                    <img src="files/vogtle_homelab.png" alt="Homelab setup showing server rack with Proxmox and pfSense" class="project-image">
+                    <div>
+                        <h3>Homelab — Virtualization of all types. <a href="https://www.linkedin.com/in/jaxondupre/details/projects/" target="_blank" aria-label="LinkedIn projects page">
+                            <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+                        </a>
+                        </h3>
+                        <h4 class="subtitle">Proxmox, pfSense, and self-hosted services.</h4>
+                        <p class="project-info">
+                            This is the heart of my self-hosted infrastructure—a homelab built to explore,
+                            automate, and protect. Powered by Proxmox for virtualization and pfSense for
+                            firewalling, DMZ, and VLAN segmentation, this project demonstrates, in part, my experience
+                            with recreating enterprise-level infrastructure
+                            networking in a home environment. I’ve set up a dedicated NAT/DMZ layer to
+                            keep internal services secure and isolated, with web apps safely exposed
+                            through Cloudflare reverse proxies.<br><br>
 
+                            To keep things visible and accountable,
+                            I've built a real-time status page using Uptime Kuma, Grafana, and InfluxDB
+                            offering live service health metrics at a glance. From automatic backups
+                            to smart routing, this lab represents my ongoing investment in learning
+                            infrastructure, solving real problems with scalable, automatable, and secure solutions.
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="work-experience-section" class="work-experience-section text-center py-5 section-with-margin">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <p>
+                I’ve had the opportunity to work on projects that span web development, infrastructure, and
+                automation—supporting over 400 clients across a range of technical challenges. From building
+                websites and streamlining backend systems to deploying full-stack features and managing security configurations,
+                my focus has always been on creating practical, scalable solutions that just work.<br><br>
+
+                For a detailed breakdown of my experience, including specific roles,
+                technologies used, and accomplishments, please feel free to connect
+                with me on <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank">LinkedIn</a> or reach out directly.
+                I'd love to share more.
+            </p>
+        </div>
+    </section>
 </main>
 
 <footer class="mt-5 py-4 text-center">
-  <div class="footer-core-container">
-    <div class="earth-core">
-      <div class="speckle" style="top: 20%; left: 30%;"></div>
-      <div class="speckle" style="top: 50%; left: 70%;"></div>
-      <div class="speckle" style="top: 80%; left: 20%;"></div>
-      <div class="speckle" style="top: 40%; left: 10%;"></div>
-      <div class="speckle" style="top: 10%; left: 80%;"></div>
+    <div class="footer-core-container">
+        <div class="earth-core">
+            <div class="speckle" style="top: 20%; left: 30%;"></div>
+            <div class="speckle" style="top: 50%; left: 70%;"></div>
+            <div class="speckle" style="top: 80%; left: 20%;"></div>
+            <div class="speckle" style="top: 40%; left: 10%;"></div>
+            <div class="speckle" style="top: 10%; left: 80%;"></div>
+        </div>
     </div>
-  </div>
-  <div class="container" style="position: relative; z-index: 2;">
-    <p>© <span id="current-year"></span> Jaxon Dupre. All rights reserved.</p>
-    <div class="social-icons justify-content-center">
-      <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
-        <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
-      </a>
-      <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
-        <img src="files/github.svg" alt="GitHub" class="social-icon">
-      </a>
+    <div class="container" style="position: relative; z-index: 2;">
+        <p>© <span id="current-year"></span> Jaxon Dupre. All rights reserved.</p>
+        <div class="social-icons justify-content-center">
+            <a href="https://www.linkedin.com/in/jaxondupre/" target="_blank" aria-label="LinkedIn Profile">
+                <img src="files/linkedin.svg" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://github.com/jjdyo" target="_blank" aria-label="GitHub Profile">
+                <img src="files/github.svg" alt="GitHub" class="social-icon">
+            </a>
+        </div>
     </div>
-  </div>
 </footer>
 
-<!-- JavaScript
-<script src="/bootstrap-4.5.3/js/bootstrap.bundle.min.js"></script> -->
 <script src="script.js"></script>
 <script>
-  // Update copyright year automatically
-  document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

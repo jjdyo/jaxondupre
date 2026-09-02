@@ -2,12 +2,12 @@
 body {
     font-family: 'Ubuntu Mono', monospace;
     color: #e0e0e0;
-    background: linear-gradient(180deg, 
-        #0d1b1e 0%, 
-        #1a2a1b 20%, 
-        #1a2a1b 70%, 
-        #2c1e14 90%, 
-        #3d2b1f 100%
+    background: linear-gradient(180deg,
+    #0d1b1e 0%,
+    #1a2a1b 20%,
+    #1a2a1b 70%,
+    #2c1e14 90%,
+    #3d2b1f 100%
     );
     background-attachment: fixed;
     font-size: 1rem;
@@ -20,10 +20,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Rubik Mono One', sans-serif;
-    color: #a3c9a8; /* Muted sage green */
+    color: #a3c9a8;
 }
 
-/* Plant/Earth Theme Overrides */
+/* Hero */
 .hero {
     height: 100vh;
     text-align: center;
@@ -36,24 +36,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero::before, .hero::after {
-    display: none; /* Remove old mushroom background */
+    display: none;
 }
 
-/* Container for the blooming plant */
 #plant-container {
     width: 520px;
-    height: 450px;
-    margin-bottom: 2rem;
+    height: 480px;
+    margin-bottom: 1.5rem;
     z-index: 1;
     display: flex;
-    /* Keep the plant visually centered, but anchor it slightly lower so it sits
-       naturally above the hero text on a wide range of aspect ratios. */
     align-items: flex-end;
     justify-content: center;
-    transform: translateY(24px);
+    transform: translateY(20px);
 }
 
-/* Vine SVG styling */
+/* Vine SVG */
 .vines-svg {
     position: fixed;
     top: 0;
@@ -67,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .vine-path {
     fill: none;
-    stroke: #5d4037; /* Brown color */
+    stroke: #5d4037;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -80,38 +77,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes vine-sway {
-    0%, 100% { 
-        transform: translateX(0) rotate(0deg); 
-    }
-    33% { 
-        transform: translateX(2px) rotate(0.4deg); 
-    }
-    66% { 
-        transform: translateX(-2px) rotate(-0.4deg); 
-    }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    33% { transform: translateX(2px) rotate(0.4deg); }
+    66% { transform: translateX(-2px) rotate(-0.4deg); }
 }
 
-.vine-extra {
-    opacity: 0;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 0; /* Fully grown, but hidden by opacity */
-    animation: vine-sway-slow 8s ease-in-out infinite, vine-fade 20s ease-in-out infinite;
-}
-
-@keyframes vine-sway-slow {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(3px); }
-}
-
-/*
-  Flow highlight overlay:
-  - JS creates a cloned path for each vine with class `vine-flow`.
-  - We keep main vine growth via `stroke-dasharray: 1000; stroke-dashoffset: ...`.
-  - The overlay adds a subtle “sap/flow” impression moving along the vine.
-*/
 .vine-flow {
     fill: none;
-    stroke: rgba(157, 112, 92, 0.95); /* slightly lighter brown highlight */
+    stroke: rgba(157, 112, 92, 0.95);
     stroke-width: 1.75;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -120,68 +93,192 @@ h1, h2, h3, h4, h5, h6 {
     will-change: stroke-dashoffset;
 }
 
-.vine-extra-2 {
-    animation-delay: -4s;
+.vine-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
 }
 
-.vine-extra-3 {
-    animation-delay: -8s;
+/* ===== CANNABIS PLANT ===== */
+.cannabis-plant {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
 }
 
-.vine-extra-4 {
-    animation-delay: -12s;
+.cannabis-plant .stem {
+    fill: none;
+    stroke: #3f5b3a;
+    stroke-width: 4.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+    animation: stem-draw 1.15s ease-out forwards;
 }
 
-@keyframes vine-fade {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.3; }
+.cannabis-plant .branch {
+    fill: none;
+    stroke: #3f5b3a;
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 160;
+    stroke-dashoffset: 160;
+    animation: branch-draw 0.85s ease-out forwards;
 }
 
+.cannabis-plant .branch-l1,
+.cannabis-plant .branch-r1 { animation-delay: 0.65s; }
+.cannabis-plant .branch-l2,
+.cannabis-plant .branch-r2 { animation-delay: 0.80s; }
+.cannabis-plant .branch-l3,
+.cannabis-plant .branch-r3 { animation-delay: 0.95s; }
+.cannabis-plant .branch-top { animation-delay: 1.05s; }
+
+/* Fan leaves – 5 finger */
+.cannabis-plant .fan path {
+    fill: none;
+    stroke: #6d8a64;
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Slight color variation on the outer fingers */
+.cannabis-plant .fan path:nth-child(2),
+.cannabis-plant .fan path:nth-child(3),
+.cannabis-plant .fan path:nth-child(4),
+.cannabis-plant .fan path:nth-child(5) {
+    stroke: #7a9a70;
+    stroke-width: 1.9;
+}
+
+.cannabis-plant .fan {
+    --tx: 0px;
+    --ty: 0px;
+    --s: 1;
+    transform-origin: 0 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+}
+
+.cannabis-plant .fan-1 {
+    --tx: 50px; --ty: 98px; --s: 0.92;
+    animation: fan-unfurl 0.9s 0.70s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+.cannabis-plant .fan-2 {
+    --tx: 50px; --ty: 74px; --s: 0.80;
+    animation: fan-unfurl 0.9s 0.85s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+.cannabis-plant .fan-3 {
+    --tx: 50px; --ty: 52px; --s: 0.68;
+    animation: fan-unfurl 0.9s 1.00s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+/* Buds – centered better on the branches */
+.cannabis-plant .bud {
+    --tx: 50px;
+    --ty: 12px;
+    --s: 1;
+    --delay: 1.15s;
+    transform-origin: 0 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+    animation: bud-pop 0.7s var(--delay) ease-out forwards;
+}
+
+.cannabis-plant .bud-main { --tx: 50px; --ty: 10px;  --s: 1.18; --delay: 1.15s; }
+
+/* Lower – pulled further in */
+.cannabis-plant .bud-l1   { --tx: 28px; --ty: 67px;  --s: 1.00; --delay: 1.25s; }
+.cannabis-plant .bud-r1   { --tx: 73px; --ty: 64px;  --s: 0.97; --delay: 1.28s; }
+
+/* Mid */
+.cannabis-plant .bud-l2   { --tx: 31px; --ty: 47px;  --s: 0.92; --delay: 1.38s; }
+.cannabis-plant .bud-r2   { --tx: 70px; --ty: 44px;  --s: 0.90; --delay: 1.41s; }
+
+/* Upper */
+.cannabis-plant .bud-l3   { --tx: 35px; --ty: 30px;  --s: 0.84; --delay: 1.50s; }
+.cannabis-plant .bud-r3   { --tx: 66px; --ty: 32px;  --s: 0.82; --delay: 1.53s; }
+
+.cannabis-plant .bud-core {
+    fill: #a3c9a8;
+}
+
+.cannabis-plant .bud-nug {
+    fill: #d4e4bc;
+    opacity: 0.95;
+}
+
+/* Keyframes */
+@keyframes stem-draw {
+    to { stroke-dashoffset: 0; }
+}
+@keyframes branch-draw {
+    to { stroke-dashoffset: 0; }
+}
+@keyframes fan-unfurl {
+    0% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--s));
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+@keyframes bud-pop {
+    0% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(var(--s)); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cannabis-plant .stem,
+    .cannabis-plant .branch,
+    .cannabis-plant .fan,
+    .cannabis-plant .bud {
+        animation: none !important;
+        stroke-dashoffset: 0 !important;
+        transform: translate(var(--tx), var(--ty)) scale(var(--s)) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Rest of your existing styles (project cards, menu, footer, mobile, etc.) */
 .container.fade-in, .container {
     position: relative;
     z-index: 10;
 }
 
-.bio-section {
-    position: relative;
-    z-index: 1;
-}
-
-.projects-section {
-    position: relative;
-    z-index: 1;
-}
-
-.work-experience-section {
+.bio-section, .projects-section, .work-experience-section {
     position: relative;
     z-index: 1;
 }
 
 .project-card {
-    background-color: rgba(26, 42, 27, 0.9); /* Darker green, higher opacity for better contrast */
+    background-color: rgba(26, 42, 27, 0.9);
     border: 1px solid #4b6345;
     padding: 1.25rem;
     margin-bottom: 1.875rem;
     border-radius: 0.5rem;
     position: relative;
     z-index: 11;
-    backdrop-filter: blur(5px); /* Optional: add blur to help text pop against vines */
+    backdrop-filter: blur(5px);
 }
 
-.project-card h3 {
-    color: #d4e4bc;
-}
-
-.project-card .project-info {
-    color: #f0f0f0;
-}
+.project-card h3 { color: #d4e4bc; }
+.project-card .project-info { color: #f0f0f0; }
 
 footer {
     color: #d4e4bc;
-    border-top: 10px solid rgba(61, 43, 31, 0.5); /* "Soil" layer */
+    border-top: 10px solid rgba(61, 43, 31, 0.5);
     position: relative;
     z-index: 1;
-    overflow: hidden; /* For the rotating core */
+    overflow: hidden;
 }
 
 .footer-core-container {
@@ -200,21 +297,13 @@ footer {
     border-radius: 50%;
     filter: blur(20px);
     opacity: 0.4;
-    animation: core-rotate-pulse 6s ease-in-out infinite; /* Faster and smoother pulse */
+    animation: core-rotate-pulse 6s ease-in-out infinite;
     position: relative;
 }
 
 @keyframes core-rotate-pulse {
-    0%, 100% { 
-        transform: rotate(0deg) scale(1); 
-        opacity: 0.4; 
-        filter: blur(20px);
-    }
-    50% { 
-        transform: rotate(180deg) scale(1.15); 
-        opacity: 0.7; 
-        filter: blur(25px);
-    }
+    0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.4; filter: blur(20px); }
+    50% { transform: rotate(180deg) scale(1.15); opacity: 0.7; filter: blur(25px); }
 }
 
 .speckle {
@@ -227,237 +316,31 @@ footer {
     box-shadow: 0 0 5px #fff;
 }
 
-@keyframes core-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 footer .social-icon {
     filter: sepia(100%) hue-rotate(60deg) brightness(80%);
 }
 
-/* Hero plant (cannabis-like silhouette) */
-.cannabis-plant {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    display: block;
-    margin: 0 auto;
-    /* Let the container do the positioning so the SVG stays truly centered. */
-    transform: translateX(0);
-}
-
-.cannabis-plant .stem {
-    fill: none;
-    stroke: #3f5b3a;
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 220;
-    stroke-dashoffset: 220;
-    animation: stem-draw 1.1s ease-out forwards;
-}
-
-.cannabis-plant .branch {
-    fill: none;
-    stroke: #3f5b3a;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 180;
-    stroke-dashoffset: 180;
-    animation: branch-draw 0.9s 0.85s ease-out forwards;
-}
-
-.cannabis-plant .fan path {
-    fill: none;
-    stroke: #6d8a64;
-    stroke-width: 2.75;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.cannabis-plant .fan {
-    /*
-      IMPORTANT: Use CSS transforms for BOTH positioning and animation.
-      If a CSS `transform` is present, it overrides any SVG `transform="..."` attribute.
-      So we keep the attach-point translation in CSS (SVG user units) via --tx/--ty.
-    */
-    --tx: 0px;
-    --ty: 0px;
-    --s: 1;
-    transform-origin: 0 0;
-    transform: translate(var(--tx), var(--ty)) scale(0);
-    opacity: 0;
-}
-
-.cannabis-plant .fan-1 { --tx: 50px; --ty: 78px; --s: 1.18; }
-.cannabis-plant .fan-2 { --tx: 50px; --ty: 60px; --s: 1.00; }
-.cannabis-plant .fan-3 { --tx: 50px; --ty: 42px; --s: 0.84; }
-.cannabis-plant .fan-4 { --tx: 32px; --ty: 58px; --s: 0.92; }
-.cannabis-plant .fan-5 { --tx: 68px; --ty: 56px; --s: 0.92; }
-
-.cannabis-plant .fan-1 {
-    animation: fan-unfurl 0.9s 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.cannabis-plant .fan-2 {
-    animation: fan-unfurl 0.9s 0.75s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.cannabis-plant .fan-3 {
-    animation: fan-unfurl 0.9s 0.95s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.cannabis-plant .fan-4 {
-    animation: fan-unfurl 0.9s 0.80s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.cannabis-plant .fan-5 {
-    animation: fan-unfurl 0.9s 0.88s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.cannabis-plant .bud {
-    --tx: 50px;
-    --ty: 18px;
-    --s: 1;
-    --delay: 1.1s;
-    transform-origin: 0 0;
-    transform: translate(var(--tx), var(--ty)) scale(0);
-    opacity: 0;
-    animation: bud-pop 0.7s var(--delay) ease-out forwards;
-}
-
-.cannabis-plant .bud-1 { --tx: 50px; --ty: 18px; --s: 1.12; --delay: 1.10s; }
-.cannabis-plant .bud-2 { --tx: 48px; --ty: 28px; --s: 1.02; --delay: 1.22s; }
-.cannabis-plant .bud-3 { --tx: 52px; --ty: 40px; --s: 0.96; --delay: 1.34s; }
-.cannabis-plant .bud-4 { --tx: 49px; --ty: 52px; --s: 0.90; --delay: 1.46s; }
-.cannabis-plant .bud-5 { --tx: 50px; --ty: 64px; --s: 0.86; --delay: 1.58s; }
-
-.cannabis-plant .bud-l1 { --tx: 26px; --ty: 28px; --s: 1.00; --delay: 1.18s; }
-.cannabis-plant .bud-l2 { --tx: 28px; --ty: 40px; --s: 0.94; --delay: 1.30s; }
-.cannabis-plant .bud-l3 { --tx: 32px; --ty: 52px; --s: 0.90; --delay: 1.42s; }
-
-.cannabis-plant .bud-r1 { --tx: 74px; --ty: 26px; --s: 1.00; --delay: 1.18s; }
-.cannabis-plant .bud-r2 { --tx: 72px; --ty: 38px; --s: 0.94; --delay: 1.30s; }
-.cannabis-plant .bud-r3 { --tx: 68px; --ty: 50px; --s: 0.90; --delay: 1.42s; }
-
-.cannabis-plant .pollen-dot {
-    --tx: 50px;
-    --ty: 30px;
-    --dx: 0px;
-    --delay: 2.6s;
-    fill: rgba(240, 255, 245, 0.9);
-    opacity: 0;
-    filter: blur(0.15px);
-    transform-origin: center;
-    transform: translate(var(--tx), var(--ty));
-    animation: pollen-float 2.9s var(--delay) ease-in-out infinite;
-}
-
-.cannabis-plant .pollen-dot.p1 { --tx: 50px; --ty: 18px; --dx: -3px; --delay: 2.55s; }
-.cannabis-plant .pollen-dot.p2 { --tx: 52px; --ty: 28px; --dx: 2px;  --delay: 2.62s; }
-.cannabis-plant .pollen-dot.p3 { --tx: 48px; --ty: 40px; --dx: -2px; --delay: 2.70s; }
-.cannabis-plant .pollen-dot.p4 { --tx: 50px; --ty: 58px; --dx: 3px;  --delay: 2.78s; }
-.cannabis-plant .pollen-dot.p5 { --tx: 26px; --ty: 32px; --dx: -4px; --delay: 2.64s; }
-.cannabis-plant .pollen-dot.p6 { --tx: 30px; --ty: 46px; --dx: 2px;  --delay: 2.74s; }
-.cannabis-plant .pollen-dot.p7 { --tx: 74px; --ty: 30px; --dx: 4px;  --delay: 2.66s; }
-.cannabis-plant .pollen-dot.p8 { --tx: 70px; --ty: 48px; --dx: -2px; --delay: 2.76s; }
-
-.cannabis-plant .bud-core {
-    fill: #a3c9a8;
-}
-
-.cannabis-plant .bud-nug {
-    fill: #d4e4bc;
-    opacity: 0.95;
-}
-
-.cannabis-plant .bud-core,
-.cannabis-plant .bud-nug {
-    transform-origin: center;
-    animation: none;
-}
-
-@keyframes stem-draw {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes branch-draw {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes fan-unfurl {
-    0% {
-        transform: translate(var(--tx), var(--ty)) scale(0);
-        opacity: 0;
-        filter: blur(2px);
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty)) scale(var(--s));
-        opacity: 1;
-        filter: blur(0);
-    }
-}
-
-@keyframes bud-pop {
-    0% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-    100% { transform: translate(var(--tx), var(--ty)) scale(var(--s)); opacity: 1; }
-}
-
-@keyframes pollen-float {
-    0% {
-        transform: translate(var(--tx), var(--ty)) translate(0, 0);
-        opacity: 0;
-    }
-    15% {
-        opacity: 0.28;
-    }
-    70% {
-        transform: translate(var(--tx), var(--ty)) translate(var(--dx), -14px);
-        opacity: 0.18;
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty)) translate(calc(var(--dx) * 1.3), -22px);
-        opacity: 0;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .cannabis-plant .pollen-dot {
-        animation: none;
-        opacity: 0;
-    }
-}
-
-/* Buds stay still once popped in (no pulsing movement). */
-
-.vine-path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-}
-
 .text-center.fade-in {
     position: relative;
-    z-index: 10; /* Ensure text is above vines if they are z-index 2 */
+    z-index: 10;
 }
 
 h1 {
-    font-size: 2.5rem; /* Equivalent to 40px */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Stronger shadow */
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 p.lead {
-    font-size: 1.125rem; /* Equivalent to 18px */
+    font-size: 1.125rem;
     font-family: 'Ubuntu Mono', monospace;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Stronger shadow */
-    color:white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    color: white;
 }
 
-/* Floating Elements (Icon + Hamburger Button) */
+/* Floating elements + menu (unchanged from your original) */
 .floating-elements {
     position: fixed;
-    top: 1.25rem; /* 20px equivalent */
+    top: 1.25rem;
     left: 1.25rem;
     display: flex;
     align-items: center;
@@ -468,9 +351,9 @@ p.lead {
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-right: 0.625rem; /* 10px equivalent */
-    height:75px;
-    width:75px;
+    margin-right: 0.625rem;
+    height: 75px;
+    width: 75px;
 }
 
 .icon-image {
@@ -483,7 +366,7 @@ p.lead {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    width: 1.875rem; /* 30px equivalent */
+    width: 1.875rem;
     height: 1.875rem;
     justify-content: space-between;
     background-color: transparent;
@@ -492,40 +375,34 @@ p.lead {
     outline: none;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-    z-index: 1001; /* Ensure it stays above the expanded menu */
+    z-index: 1001;
     position: relative;
 }
 
 .hamburger-btn div {
     width: 100%;
-    height: 0.25rem; /* 4px equivalent */
+    height: 0.25rem;
     background-color: rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
-/* Hamburger animation when menu is open */
 .expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(1) {
     transform: translateY(0.625rem) rotate(45deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
-
-.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(2) {
-    opacity: 0;
-}
-
+.expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(2) { opacity: 0; }
 .expanded-menu.open ~ .floating-elements .hamburger-btn div:nth-child(3) {
     transform: translateY(-0.625rem) rotate(-45deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Expanded Menu */
 .expanded-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black background */
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 900;
     padding: 1.25rem;
     display: flex;
@@ -543,25 +420,21 @@ p.lead {
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
 }
 
-/* Social Icons */
 .social-icons {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 1.25rem; /* 20px equivalent */
-    margin-top: 3rem; /* Add some top margin to move them below the menu */
+    margin-bottom: 1.25rem;
+    margin-top: 3rem;
 }
 
-.social-icons a {
-    margin: 0 0.625rem; /* 10px equivalent */
-}
+.social-icons a { margin: 0 0.625rem; }
 
 .social-icon {
-    width: 3rem; /* 30px equivalent */
+    width: 3rem;
     height: 3rem;
     object-fit: contain;
 }
 
-/* Menu Content */
 .menu-content {
     display: flex;
     flex-direction: column;
@@ -573,32 +446,25 @@ p.lead {
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
-    margin-bottom: 1.25rem; /* 20px equivalent */
+    margin-bottom: 1.25rem;
     padding: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    text-align: left; /* Align text to the left */
+    text-align: left;
 }
 
 .menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+    background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
 
 .menu-item h2 {
-    font-size: 1.75rem; /* Match the size of the h2 header */
+    font-size: 1.75rem;
     margin-right: 2rem;
     color: #f0f0f0;
-    transition: color 0.3s ease;
 }
 
 .menu-item a {
-    color: inherit; /* Inherit color from h2 */
-    text-decoration: none; /* Remove the underline */
-    transition: color 0.3s ease;
-}
-
-.menu-item:hover a {
-    color: #f0f0f0; /* Set hover color */
+    color: inherit;
     text-decoration: none;
 }
 
@@ -610,15 +476,9 @@ p.lead {
     margin-top: 0.5rem;
 }
 
-.menu-item:hover .menu-description {
-    color: #f0f0f0; /* Match text to white on hover */
-    transition: color 0.3s ease;
-}
+.menu-item:hover .menu-description { color: #f0f0f0; }
 
-/* Section spacing and transitions */
-.section-with-margin {
-    margin-top: 3.125rem; /* 50px equivalent - replaces spacer divs */
-}
+.section-with-margin { margin-top: 3.125rem; }
 
 .section-after-hero {
     position: relative;
@@ -627,10 +487,9 @@ p.lead {
     background: transparent;
 }
 
-/* Fade-in effect for elements */
 .fade-in {
     opacity: 0;
-    transform: translateY(1.25rem); /* 20px equivalent */
+    transform: translateY(1.25rem);
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     will-change: opacity, transform;
 }
@@ -640,71 +499,49 @@ p.lead {
     transform: translateY(0);
 }
 
-/* Add extra padding to the last section for smoother scrolling */
-#work-experience-section {
-    padding-bottom: 50vh; /* Extra space for smooth scrolling */
-}
+#work-experience-section { padding-bottom: 50vh; }
 
-.menu-container{
-    margin-top: 8rem;
-}
+.menu-container { margin-top: 8rem; }
 
-
-/* Mobile Responsiveness for Full-Screen Menu */
+/* Mobile */
 @media (max-width: 768px) {
-    /* Hide vines on small screens if they overlap too much */
-    .vines-svg {
-        display: none;
-    }
+    .vines-svg { display: none; }
 
-    /* Resize Hamburger Icon */
     .hamburger-btn {
-        width: 2rem; /* Make the hamburger icon smaller */
+        width: 2rem;
         height: 2rem;
-        z-index: 1001; /* Ensure it's on top of everything */
-        display: flex; /* Ensure the hamburger icon is visible */
+        z-index: 1001;
+        display: flex;
     }
+    .hamburger-btn div { height: 0.2rem; }
 
-    .hamburger-btn div {
-        height: 0.2rem; /* Make the hamburger lines thinner */
-    }
-
-    /* Adjust Floating Elements (Icon + Hamburger) */
     .floating-elements {
-        top: 0.75rem; /* Slightly closer to the top */
+        top: 0.75rem;
         left: 0.75rem;
-        display: flex; /* Ensure the floating elements are visible */
-        z-index: 1000; /* Keep it on top */
+        display: flex;
+        z-index: 1000;
     }
 
-    .icon-image {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Full-screen expanded menu */
     .expanded-menu {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw; /* Full width */
-        height: 100vh; /* Full height */
-        background-color: rgba(0, 0, 0, 0.9); /* Darken background */
-        padding: 2rem; /* Add padding for the content */
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 2rem;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* Start content from top */
-        align-items: flex-start; /* Left align content */
+        justify-content: flex-start;
+        align-items: flex-start;
         transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
         transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
-        z-index: 999; /* Ensure it's on top of everything */
-        overflow-y: auto; /* Allow scrolling for overflowing content */
+        z-index: 999;
+        overflow-y: auto;
     }
 
-    /* Ensure the open state has the correct transition for mobile too */
     .expanded-menu.open {
         transform: translateX(0);
         opacity: 1;
@@ -712,84 +549,67 @@ p.lead {
         transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
     }
 
-    /* Add margin to the menu items and social icons */
     .menu-container {
-        margin-top: 6rem; /* Leave space for floating elements (hamburger and icon) */
-        width: 100%; /* Ensure the container takes full width */
-        padding: 0 1rem; /* Add padding to avoid text going edge-to-edge */
+        margin-top: 6rem;
+        width: 100%;
+        padding: 0 1rem;
     }
 
     .menu-item {
-        text-align: left; /* Left-align text */
-        width: 100%; /* Full width for easier clicks */
-        padding: 20px 0; /* Larger click targets */
-        margin: 0.75rem 0; /* Add some margin between items */
-        font-size: 1.25rem; /* Reduce the font size slightly */
-        flex-direction: column; /* Stack the text under the headers */
-        align-items: flex-start; /* Ensure alignment is consistent */
+        text-align: left;
+        width: 100%;
+        padding: 20px 0;
+        margin: 0.75rem 0;
+        font-size: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .menu-description {
-        font-size: 1.25rem; /* Reduce description font size */
-        margin-top: 0.5rem; /* Add some space between header and description */
-        width: 100%; /* Prevent overflow */
-        word-wrap: break-word; /* Break long text */
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+        width: 100%;
+        word-wrap: break-word;
     }
 
-    /* Social Icons for Mobile */
     .social-icons {
-        margin-top: 2rem; /* Space above the icons */
-        margin-bottom: 2rem; /* Space below the icons */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
         justify-content: center;
     }
 
     .social-icon {
-        width: 2rem; /* Larger icons on mobile */
+        width: 2rem;
         height: 2rem;
-        margin: 0 0.75rem; /* Add spacing between social icons */
+        margin: 0 0.75rem;
     }
 
-    /* Hide floating elements ONLY when expanded menu is open */
-    .expanded-menu.open ~ .floating-elements {
-        display: none;
-    }
+    .expanded-menu.open ~ .floating-elements { display: none; }
 
-    /* Adjust Project Cards for Mobile */
     .project-content {
-        flex-direction: column; /* Stack image and text on mobile */
+        flex-direction: column;
         text-align: center;
     }
 
     .project-image {
-        width: 100%; /* Make the image take full width on mobile */
+        width: 100%;
         height: auto;
     }
 
-    .project-card h3 {
-        font-size: 1.25rem; /* Smaller title for projects */
-    }
+    .project-card h3 { font-size: 1.25rem; }
+    .project-card .subtitle { font-size: 1rem; }
+    .project-card .project-info { font-size: 0.85rem; }
 
-    .project-card .subtitle {
-        font-size: 1rem; /* Smaller subtitle */
-    }
-
-    .project-card .project-info {
-        font-size: 0.85rem; /* Smaller detailed information */
-    }
-
-    /* Adjust Bio Section for Mobile */
-    .bio-section h2 {
-        font-size: 1.5rem; /* Adjust About Me heading */
-    }
-
+    .bio-section h2 { font-size: 1.5rem; }
     .bio-text {
-        font-size: 1rem; /* Adjust bio text */
-        padding: 0 1rem; /* Add padding to avoid text touching edges */
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 
-    /* Adjust section margins on mobile */
-    .section-with-margin {
-        margin-top: 2rem; /* Smaller margin between sections */
-    }
+    .section-with-margin { margin-top: 2rem; }
 
+    #plant-container {
+        width: 340px;
+        height: 340px;
+    }
 }
